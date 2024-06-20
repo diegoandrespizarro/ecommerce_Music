@@ -46,6 +46,9 @@
     list-style: none;
     margin: 15px;
 }
+.dropdown-menu {
+    z-index: 2000;
+}
 .AyudaContenedor{
     margin-left: 80px;
     li{
