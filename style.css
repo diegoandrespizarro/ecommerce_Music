@@ -472,3 +472,42 @@
     }
 
 }
+
+/*CATEGORIAS*/
+
+.title-categories{
+    margin-top: 40px;
+    font-size: 40px;
+    text-shadow: 2px 2px 5px rgb(98, 114, 106);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    background-color:rgb(0, 0, 0);
+    padding: 0;
+    color: #14ff72cb;
+    border-style: double;
+}
+
+
+/* ADDPRODUCT */
+/* contendor formulario */
+.Form-Contenedor{
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-Secundario-Contenedor{
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 5px 4px 8px rgba(1, 1, 1, 0.5); /* Sombra */
+    background-color: #201f1f !important; /* Fondo blanco */
+    label{
+        color: white;
+    }
+}
