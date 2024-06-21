@@ -22,23 +22,25 @@
                 <a class="navbar-brand" href="/index.html"><img src="./assets/2.png" alt="" class="logoNav"></a>
                 <div class="ContenedorProductoNav">
                     <li class="nav-item dropdown ContendorDropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Categoria
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Categoria
                         </a>
                         <ul class="dropdown-menu ">
-                          <li><a class="dropdown-item" href="#">Guitarra</a></li>
-                          <li><a class="dropdown-item" href="#">Bateria</a></li>
-                          <li><a class="dropdown-item" href="#">Audio Dj</a></li>
+                            <li><a class="dropdown-item" href="#">Guitarra</a></li>
+                            <li><a class="dropdown-item" href="#">Bateria</a></li>
+                            <li><a class="dropdown-item" href="#">Audio Dj</a></li>
                         </ul>
                     </li>
-                    <a href="/pages/addproduct.html">Nuevo producto</a>
+                    <a href="/pages/addproduct.html" class="nuevoProducto">Nuevo producto</a>
                     <div class="AyudaContenedor">
                         <li class="nav-item dropdown">
-                            <i class="bi bi-whatsapp"></i>
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Ayuda
+                            
+                            <a class="nav-link dropdown-toggle text-Ayuda" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Ayuda<i class="bi bi-whatsapp"></i>
                             </a>
+                            
                             <ul class="dropdown-menu">
                                 <div class="header__bottom__marcas__cont ContendorContacto">
                                     <span>Recibí ayuda de nuestro equipo:</span>
@@ -49,13 +51,17 @@
                             </ul>
                         </li>
                     </div>
-                    <a href="/pages/login.html" class="header__account nav-link"><i class="bi bi-person-circle m-3"></i>Mi cuenta<span class="header__account__icon icon-usuario"></span></a>
                 </div>
-                
-                <button class="navbar-toggler contenedorPrincipalCarrito" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                    <span class="bi bi-cart carritoContenedor" id="carritoCantidad"></span>
-                </button>
+                <div class="contendorCarritoCuenta">
+                    <a href="/pages/login.html" class="header__account nav-link"><i
+                            class="bi bi-person-circle m-3"></i><span
+                            class="header__account__icon icon-usuario"></span></a>
+                    <button class="navbar-toggler contenedorPrincipalCarrito" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
+                        aria-label="Toggle navigation">
+                        <span class="bi bi-cart carritoContenedor" id="carritoCantidad"></span>
+                    </button>
+                </div>
                 <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
@@ -63,25 +69,28 @@
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <!-- carrito productos -->
-                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrito" aria-labelledby="offcanvasCarritoLabel">
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrito"
+                        aria-labelledby="offcanvasCarritoLabel">
                         <div class="offcanvas-header">
                             <h5 class="offcanvas-title" id="offcanvasCarritoLabel">Carrito</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
                         </div>
-                        
+
                     </div>
                     <div class="offcanvas-body ">
-                            <div id="carritoProductos" class="Contenedor-productos-carrito">
-                                <!-- Productos agregados al carrito se renderizarán aquí -->
-                            </div>
+                        <div id="carritoProductos" class="Contenedor-productos-carrito">
+                            <!-- Productos agregados al carrito se renderizarán aquí -->
                         </div>
+                    </div>
                     <!-- inicia el carrito footer-->
                     <div class="mini-cart-footer">
                         <div class="mini-cart-total">
                             <div class="mini-cart-total-title">Total</div>
                             <div class="mini-cart-total-price card-precio" id="totalCompra">$0.00</div>
-                        </div>              
-                        <a href="" class="btn btn-primary btn-block mini-cart-btn" id="compraFinalizada">Iniciar compra</a>
+                        </div>
+                        <a href="" class="btn btn-primary btn-block mini-cart-btn" id="compraFinalizada">Iniciar
+                            compra</a>
                         <a href="" class="btn btn-danger btn-block mini-cart-btn" id="vaciarCarrito">Vaciar carrito</a>
                         <a href="./index.html" class="btn btn-success btn-block mini-cart-btn">Seguir comprando</a>
                     </div>
@@ -93,41 +102,41 @@
         <div class="carousel">
 
             <div class="list">
-    
+
                 <div class="item" style="background-image: url(/assets/guitarra1.jpg);">
                     <div class="content">
                         <div class="title">GUITARRAS</div>
                         <div class="name"></div>
-                        <div class="des">Diversos modelos y marcas!</div>               
+                        <div class="des">Diversos modelos y marcas!</div>
                     </div>
                 </div>
                 <div class="item" style="background-image: url(assets/piano.webp);">
                     <div class="content">
                         <div class="title">PIANOS</div>
                         <div class="name"></div>
-                        <div class="des">Todos los modelos!!!</div>                  
+                        <div class="des">Todos los modelos!!!</div>
                     </div>
                 </div>
-               
+
                 <div class="item" style="background-image: url(assets/trompeta.jpg);">
                     <div class="content">
                         <div class="title">TROMPETA</div>
                         <div class="name"></div>
-                        <div class="des">Dale a tu inspiración todo lo que te pida!</div>                 
+                        <div class="des">Dale a tu inspiración todo lo que te pida!</div>
                     </div>
                 </div>
                 <div class="item" style="background-image: url(assets/violin5.webp);">
                     <div class="content">
                         <div class="title">VIOLINES</div>
                         <div class="name"></div>
-                        <div class="des">El Violín STRAD2000 nuevo diseño!</div>                   
+                        <div class="des">El Violín STRAD2000 nuevo diseño!</div>
                     </div>
                 </div>
                 <div class="item" style="background-image: url(assets/dj.jpg);">
                     <div class="content">
                         <div class="title">DJ</div>
                         <div class="name"></div>
-                        <div class="des">Encontrá los mejores equipos para DJ!</div>              
+                        <div class="des">Encontrá los mejores equipos para DJ!</div>
                     </div>
                 </div>
                 <div class="item" style="background-image: url(assets/BATERIA2.jpg);">
@@ -138,24 +147,32 @@
                     </div>
                 </div>
             </div>
-    
+
             <!--next prev button-->
             <div class="arrows">
                 <button class="prev"><</button>
+                    
                 <button class="next">></button>
             </div>
-    
-    
+
+
             <!-- time running -->
             <div class="timeRunning"></div>
-    
+
         </div>
     </section>
-
-
+    <!-- ACA DEJO EL CONTENEDOR PARA LAS CARD -->
+    <div class="container mt-5">
+        <h1 class="mb-4">Productos</h1>
+        <div id="product-list" class="row">
+            
+        </div>
+    </div>
 
     <script src="./script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
