@@ -201,3 +201,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
                                 // FINAL DE RENDERIZADO DE PRODUCTOS DE LA API
+
+
+
+// CATEGORIAS DE PRODUCTOS
+
+
+  
+ 
