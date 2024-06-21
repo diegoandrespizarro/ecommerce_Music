@@ -487,3 +487,27 @@
     color: #14ff72cb;
     border-style: double;
 }
+
+
+/* ADDPRODUCT */
+/* contendor formulario */
+.Form-Contenedor{
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-Secundario-Contenedor{
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 5px 4px 8px rgba(1, 1, 1, 0.5); /* Sombra */
+    background-color: #201f1f !important; /* Fondo blanco */
+    label{
+        color: white;
+    }
+}
