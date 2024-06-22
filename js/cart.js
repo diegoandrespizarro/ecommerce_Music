@@ -5,11 +5,13 @@ const totalCompra = document.getElementById('totalCompra');
 
 document.addEventListener('click', async (event) => {
     if (event.target.classList.contains('agregarAlCarrito')) {
+        const productCard = event.target.closest('.card.mb-4.shadow-sm'); // Obtener el contenedor de la tarjeta de producto
         const product = event.target.closest('.card-body');
         const title = product.querySelector('.card-title').textContent;
         const descripcion = product.querySelector('.card-text').textContent;
         const precio = parseFloat(product.querySelector('.card-precio').textContent.replace('$', ''));
-        
+        const imageUrl = productCard.querySelector('.carrito-producto-imagen') ? productCard.querySelector('.carrito-producto-imagen').getAttribute('src') : '';
+        console.log(imageUrl)
         // Verificar si el producto ya está en el carrito
         let productoEnCarrito = false;
         const productosEnCarrito = carritoProductos.querySelectorAll('.carrito-producto');
@@ -19,7 +21,6 @@ document.addEventListener('click', async (event) => {
                 let cantidad = producto.querySelector('.suma-resta-productos p');
                 cantidad.textContent = parseInt(cantidad.textContent) + 1;
                 productoEnCarrito = true;
-                totalCompraCarrito();
             }
         });
 
@@ -27,7 +28,7 @@ document.addEventListener('click', async (event) => {
         if (!productoEnCarrito) {
             const productCard = `
                 <div class="carrito-producto">
-                    <img class="carrito-producto-imagen" src="./img/guitarra-clasica-valencia-vc102-nino-1-2-natural-guitarra-clasica-valencia-vc102-nino-1-2-natural.jpg" alt="">
+                    <img class="card-img-top" src="${imageUrl}" alt="${title}">
                     <div class="carrito-producto-titulo">
                         <small>${title}</small>
                         <h3>${descripcion}</h3>
@@ -43,7 +44,6 @@ document.addEventListener('click', async (event) => {
             `;
 
             carritoProductos.innerHTML += productCard;
-            totalCompraCarrito();
         }
     }
 });
