@@ -550,7 +550,49 @@
     height: 50%;
     border-radius: 0 0 10px 10px; /* Bordes redondeados solo en la parte inferior */
 }
-
+@media screen and (max-width: 999px){
+    .contendor-Productos {
+        font-size: 12px;
+        width: 200px;
+        height: 330px;
+        h5{
+            font-size:15px;
+        }
+    }
+    .agregarAlCarrito{
+        width: 100%;
+        height: 30px;
+        font-size:10px;
+        text-align: center;
+    }
+    .shadow-sm{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 600px){
+    .contendor-Productos {
+        font-size: 10px;
+        width: 170px;
+        height: 290px;
+        h5{
+            font-size:15px;
+        }
+    }
+    .agregarAlCarrito{
+        width: 100%;
+        height: 40px;
+        font-size:10px;
+        text-align: center;
+    }
+    .shadow-sm{
+        width: 100%;
+    }
+    .carrito-producto-imagen {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+     }
+}
 /* CARD DE PRODUCTO EN EL CARRITO  */
 .card-img-top{
     width: 21%;
