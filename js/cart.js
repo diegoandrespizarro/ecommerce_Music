@@ -12,6 +12,13 @@ document.addEventListener('click', async (event) => {
         const precio = parseFloat(product.querySelector('.card-precio').textContent.replace('$', ''));
         const imageUrl = productCard.querySelector('.carrito-producto-imagen') ? productCard.querySelector('.carrito-producto-imagen').getAttribute('src') : '';
         console.log(imageUrl)
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Su producto fue agregado al carrito",
+            showConfirmButton: false,
+            timer: 1500
+          });
         // Verificar si el producto ya está en el carrito
         let productoEnCarrito = false;
         const productosEnCarrito = carritoProductos.querySelectorAll('.carrito-producto');
@@ -93,7 +100,8 @@ document.addEventListener('DOMContentLoaded', function () {
             position: "top-center",
             icon: "success",
             title: "Su compra fue realizada",
-            showConfirmButton: true,
+            showConfirmButton: false,
+            timer: 1500
         });
 
         // Aquí puedes redirigir a otra página después de la alerta si es necesario

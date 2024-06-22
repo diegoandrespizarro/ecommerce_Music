@@ -520,7 +520,39 @@
     border: 1px solid #000;
     text-align: center;
 }
-
+@media screen and (max-width: 1000px){
+    .contenedorTabla{
+        width: 100%;
+        font-size: 13px;
+        border: 2px solid red;
+        flex-wrap: wrap;
+    }
+    .delete-product{
+        width: 50px;
+        font-size: 8px;
+        margin-bottom: 4px;
+    }
+    .modificar-product{
+        font-size: 8px;
+        margin-bottom: 4px;
+    }
+}
+@media screen and (max-width: 600px){
+    .contenedorTabla{
+        width: 100%;
+        font-size: 6px;
+        border: 2px solid red;
+        flex-wrap: wrap;
+    }
+    .delete-product{
+        width: 50px;
+        font-size: 8px;
+        margin-bottom: 4px;
+    }
+    .modificar-product{
+        font-size: 8px;
+    }
+}
 /* contenedor de Productos */
 .contenedorDeProductos {
     width: 100%;
@@ -551,10 +583,23 @@
 }
 
 .shadow-sm:hover {
-    transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el ratón por encima */
+    transform: scale(1.03); /* Aumenta ligeramente el tamaño al pasar el ratón por encima */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Aumenta el efecto sombreado al pasar el ratón por encima */
 }
+.agregarAlCarrito {
+    width: 70%;
+    font-size: 13px;
+    background-color: black; /* Color inicial del botón */
+    color: white; /* Color del texto del botón */
+    border: none; /* Eliminar borde predeterminado */
+    padding: 8px; /* Añadir relleno para mayor tamaño del botón */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima */
+    transition: background-color 0.2s; /* Añadir una transición suave */
+}
 
+.agregarAlCarrito:hover {
+    background-color: #217644; /* Color del botón al pasar el cursor por encima */
+}
 .card-body {
     width: 100%;
     height: 50%;
