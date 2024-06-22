@@ -77,14 +77,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Recorrer cada producto y renderizarlo en el DOM
         products.forEach(product => {
             const productCard = `
-                <div class="col-md-4">
+                <div class="col-md-4 contendor-Productos">
                     <div class="card mb-4 shadow-sm">
-                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="${product.title}">
+                        <img class="carrito-producto-imagen" src="${product.imageUrl}" alt="${product.title}">
                         <div class="card-body">
                             <h5 class="card-title">${product.title}</h5>
                             <p class="card-text">${product.descripcion}</p>
                             <p class="card-precio"><strong>Precio:</strong> $${product.precio}</p>
-                            <p class="card-text"><strong>Id:</strong> ${product.id}</p>
                             <button class="btn btn-primary agregarAlCarrito">Agregar al carrito</button>
                         </div>
                     </div>
@@ -100,8 +99,3 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 // FINAL DE RENDERIZADO DE PRODUCTOS DE LA API
-
-
-
-// CATEGORIAS DE PRODUCTOS
-

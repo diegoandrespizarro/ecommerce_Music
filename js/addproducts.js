@@ -4,6 +4,7 @@ const productTitle = document.getElementById("productTitle");
 const productCat = document.getElementById("productCat");
 const productPrice = document.getElementById("productPrice");
 const productDescription = document.getElementById("productDescription");
+const productImage = document.getElementById("productImage");
 const urlProducts = `https://6668e555f53957909ff96e69.mockapi.io/api/Products`;
 
 submitForm.addEventListener(`submit`, async (event) => {
@@ -13,14 +14,14 @@ submitForm.addEventListener(`submit`, async (event) => {
     const categoria = productCat.value;
     const descripcion = productDescription.value;
     const precio = parseInt(productPrice.value);
-    
+    const imageUrl = productImage.value;
 
     const newProduct = {
         title: title,
         categoria: categoria,
         descripcion: descripcion,
-        precio: precio
-        
+        precio: precio,
+        imageUrl: imageUrl
     };
 
     try {
@@ -47,3 +48,4 @@ submitForm.addEventListener(`submit`, async (event) => {
         alert("Error al enviar el producto", error);
     }
 });
+
