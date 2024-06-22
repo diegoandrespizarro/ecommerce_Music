@@ -34,13 +34,19 @@ submitForm.addEventListener(`submit`, async (event) => {
         });
 
         if (response.ok) {
-            alert("Producto creado exitosamente");
+           await Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Su producto fue creado exitosamente",
+                showConfirmButton: false,
+                timer: 1500
+              });
             // Obtener el producto creado
             const createdProduct = await response.json();
             // Guardar el producto en el almacenamiento local
             localStorage.setItem('newProduct', JSON.stringify(createdProduct));
             // Redirigir a index.html
-            window.location.href = '/index.html';
+            window.location.href = '/pages/addproduct.html';
         } else {
             alert("Error al crear el producto", response.statusText);
         }
@@ -69,7 +75,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <td>${product.descripcion}</td>
                     <td>
                         <button class="btn btn-danger delete-product" data-id="${product.id}">Eliminar</button>
-                        <button class="btn btn-success modificar-product" data-id="${product.id}">Editar</button>
+                        <button class="btn btn-success modificar-product" modal-dialog modal-dialog-centered modal-dialog-scrollable data-id="${product.id}">Editar</button>
                     </td>
                 </tr>
             `;
@@ -80,26 +86,47 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error("Error al obtener los productos", error);
     }
 });
-//ELIMINAR PRODUCTOS DE LA TABLA
+// ELIMINAR PRODUCTOS DE LA TABLA
 document.addEventListener('click', async (event) => {
     if (event.target.classList.contains('delete-product')) {
         const productId = event.target.getAttribute('data-id');
-        try {
-            const response = await fetch(`${urlProducts}/${productId}`, {
-                method: 'DELETE'
-            });
 
-            if (response.ok) {
-                alert("Producto eliminado exitosamente");
-                window.location.href = '/index.html';
-            } else {
-                alert("Error al eliminar el producto", response.statusText);
+        // Mostrar la alerta de confirmación antes de hacer la solicitud de eliminación
+        const { isConfirmed } = await Swal.fire({
+            title: "Estas seguro?",
+            text: "No podrás revertir esto!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, borralo!"
+        });
+
+        if (isConfirmed) {
+            try {
+                const response = await fetch(`${urlProducts}/${productId}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    Swal.fire({
+                        title: "Eliminado!",
+                        text: "Tu producto ha sido eliminado.",
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    // Redirigir a index.html después de un breve retraso para que el usuario vea el mensaje de éxito
+                    setTimeout(() => {
+                        window.location.href = '/pages/addproduct.html';
+                    }, 1500);
+                } else {
+                    alert("Error al eliminar el producto", response.statusText);
+                }
+            } catch (error) {
+                alert("Error al eliminar el producto", error);
             }
-        } catch (error) {
-            alert("Error al eliminar el producto", error);
         }
     }
 });
-
-
 
