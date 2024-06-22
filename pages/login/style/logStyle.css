@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('/pages/login/assets/imagen\ musical\ 2.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+/* logo */
+.logo img{
+    display: flex;
+    width: 200px;
+    margin-top: -400px;
+    margin-left: -590px;
+}
+/* formulario */
+.wrapper{
+    padding: 20px;
+    width: 520px;
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    margin-top: 100px;
+    border: 2px solid rgba(10, 10, 10, 0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    backdrop-filter: blur(5px);
+}
+
+.wrapper h1{
+    font-size: 50px;
+    text-align: center;
+}
+
+.wrapper .input-box{
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+  
+}
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(12, 12, 12, 0.219);
+    border-radius: 40px;
+    font-size: 23px;
+    color: #0c0c0c;
+    padding: 20px 45px 20px 20px;
+    font-weight: 600;
+    
+}
+.input-box input::placeholder{
+    color: #111111;
+}
+.input-box i {
+    position: absolute;
+    font-size: 25px;
+    right: 40px;
+    margin-top: 12px;
+}
+.wrapper .remember-forgot{
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    margin: -15px 0 15px;
+    font-weight: 600;
+}
+.remember-forgot label input{
+    accent-color: #080808;
+    margin-right: 3px;
+    margin-left: 5px;
+}
+.remember-forgot a{
+    color: #020202;
+    text-decoration: none;
+    margin-right: 6px;
+    font-weight: 600;
+}
+.remember-forgot a:hover{
+    text-decoration: underline;
+    color: #ffffff;
+}
+.wrapper .btn{
+    width: 100%;
+    background-color: #000000;
+    height: 45px;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: 600;
+}
+.wrapper .btn:hover{
+    background-color: #ffffff;
+    color: #000000;
+}
+.wrapper .register-link{
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 600;
+    color: #000000;
+}
+.register-link p a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+}
+.register-link p a:hover{
+    text-decoration: underline;
+    color: #ffffff;
+}
