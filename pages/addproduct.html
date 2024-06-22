@@ -88,37 +88,75 @@
         </nav>
     </header>
     <!-- FORMULARIO PARA CREAR PRODUCTO NUEVO -->
-    <div class="container">
-        <h1 class="text-center mt-5">Agregar producto</h1>
-        <form action="" class="Form-Contenedor" id="submitForm" enctype="multipart/form-data">
-            <div class="form-Secundario-Contenedor">
-                <div class="mb-3">
-                    <label for="productTitle" class="form-label">Título:</label>
-                    <input type="text" class="form-control" id="productTitle" placeholder="Instrumento">
-                </div>
-                <div class="mb-3">
-                    <label for="productCat" class="form-label">Categoría:</label>
-                    <input type="text" class="form-control" id="productCat" placeholder="">
-                </div>
-                <div class="mb-3">
-                    <label for="productPrice" class="form-label">Precio:</label>
-                    <input type="text" class="form-control" id="productPrice" placeholder="">
-                </div>
-                <div class="mb-3">
-                    <label for="productImage" class="form-label">Imagen:</label>
-                    <input type="text" class="form-control" id="productImage" placeholder="URL de la imagen">
-                </div>
-                <div class="mb-3">
-                    <label for="productDescription" class="form-label">Descripción:</label>
-                    <textarea class="form-control" id="productDescription" rows="3"></textarea>
-                </div>
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Crear Producto</button>
-                </div>
+    
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btnCrearProduct" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Crear
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Crear Producto</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <form action="" class="Form-Contenedor" id="submitForm" enctype="multipart/form-data">
+                    <div class="form-Secundario-Contenedor">
+                        <div class="mb-3">
+                            <label for="productTitle" class="form-label">Título:</label>
+                            <input type="text" class="form-control" id="productTitle" placeholder="Instrumento">
+                        </div>
+                        <div class="mb-3">
+                            <label for="productCat" class="form-label">Categoría:</label>
+                            <input type="text" class="form-control" id="productCat" placeholder="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="productPrice" class="form-label">Precio:</label>
+                            <input type="text" class="form-control" id="productPrice" placeholder="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="productImage" class="form-label">Imagen:</label>
+                            <input type="text" class="form-control" id="productImage" placeholder="URL de la imagen">
+                        </div>
+                        <div class="mb-3">
+                            <label for="productDescription" class="form-label">Descripción:</label>
+                            <textarea class="form-control" id="productDescription" rows="3"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Crear Producto</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
     </div>
-
+  </div>
+    <div class="container mt-4 shadow-lg p-3 mb-5 bg-body rounded contenedorTabla " >
+        <table id="tablaProductos" class="table mt-2 table-bordered table-striped" >
+            <thead>
+                <tr class="text-center" >
+                    <th scope="col">ID</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">Categoría</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="product-list">
+                <!-- Aquí se renderizarán los productos -->
+            </tbody>
+        </table>
+    </div>
     <!-- FIN DE FORMULARIO PARA CREACION DE PRODUCTOS -->
     <script src="/script.js"></script>
     <script src="../js/addproducts.js"></script>
