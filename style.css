@@ -491,16 +491,20 @@
 
 /* ADDPRODUCT */
 /* contendor formulario */
+.btnCrearProduct{
+    margin-left: 50px;
+    margin-top: 20px;
+}
 .Form-Contenedor{
     width: 100%;
     height: auto;
-    margin-top: 50px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .form-Secundario-Contenedor{
-    width: 50%;
+    width: 100%;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -511,6 +515,12 @@
         color: white;
     }
 }
+
+.table-striped{
+    border: 1px solid #000;
+    text-align: center;
+}
+
 /* contenedor de Productos */
 .contenedorDeProductos {
     width: 100%;
