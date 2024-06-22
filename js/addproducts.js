@@ -10,11 +10,11 @@ const urlProducts = `https://6668e555f53957909ff96e69.mockapi.io/api/Products`;
 submitForm.addEventListener(`submit`, async (event) => {
     event.preventDefault(); // Evitamos la recarga de la página
 
-    const title = productTitle.value;
-    const categoria = productCat.value;
-    const descripcion = productDescription.value;
-    const precio = parseInt(productPrice.value);
-    const imageUrl = productImage.value;
+    const title = productTitle.value.trim();
+    const categoria = productCat.value.trim();
+    const descripcion = productDescription.value.trim();
+    const precio = parseFloat(productPrice.value.trim());
+    const imageUrl = productImage.value.trim();
 
     const newProduct = {
         title: title,
