@@ -100,12 +100,6 @@
     align-items: center;
     align-content: center;
 }
-.carritoContenedor{
-    color: red;
-}
-.carritoCantidadGreen{
-    color: green;
-}
 .navbar-brand{
     width: 10%;
 }
@@ -750,6 +744,7 @@
     flex-direction: column;
     width: 25%;
 }
+<<<<<<< HEAD
 /*CARRUSEL DE MARCAS*/
 @keyframes slide{
     from{
@@ -796,3 +791,13 @@
 
 
   /*productos*/
+=======
+/* sobre nosotros */
+.col-md-6 img{
+    width: 400px;
+    height: 330px;
+    margin-top: 30px;
+    margin-left: 5px;
+}
+/*FIN sobre nosotros */
+>>>>>>> c98dd2c459d332d06a4aa79e5c95218d7416d186
