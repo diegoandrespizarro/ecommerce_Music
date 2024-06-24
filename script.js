@@ -99,9 +99,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 // FINAL DE RENDERIZADO DE PRODUCTOS DE LA API
-<<<<<<< HEAD
 
 //categorias
 
-=======
->>>>>>> c98dd2c459d332d06a4aa79e5c95218d7416d186
