@@ -25,11 +25,11 @@ body{
     padding: 20px;
     width: 520px;
     background-color: transparent;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     border-radius: 10px;
     margin-top: 100px;
-    border: 2px solid rgba(10, 10, 10, 0.5);
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(5px);
 }
 
@@ -50,16 +50,16 @@ body{
     background: transparent;
     border: none;
     outline: none;
-    border: 2px solid rgba(12, 12, 12, 0.219);
+    border: 2px solid rgba(255, 255, 255, 0.219);
     border-radius: 40px;
     font-size: 23px;
-    color: #0c0c0c;
+    color: #000000;
     padding: 20px 45px 20px 20px;
     font-weight: 600;
     
 }
 .input-box input::placeholder{
-    color: #111111;
+    color: #ffffff;
 }
 .input-box i {
     position: absolute;
@@ -73,21 +73,22 @@ body{
     font-size: 20px;
     margin: -15px 0 15px;
     font-weight: 600;
+    color: #ffffff;
 }
 .remember-forgot label input{
-    accent-color: #080808;
+    accent-color: #ffffff;
     margin-right: 3px;
     margin-left: 5px;
 }
 .remember-forgot a{
-    color: #020202;
+    color: #ffffff;
     text-decoration: none;
     margin-right: 6px;
     font-weight: 600;
 }
 .remember-forgot a:hover{
     text-decoration: underline;
-    color: #ffffff;
+    color: #000000;
 }
 .wrapper .btn{
     width: 100%;
@@ -111,14 +112,14 @@ body{
     text-align: center;
     margin-top: 20px;
     font-weight: 600;
-    color: #000000;
+    color: #ffffff;
 }
 .register-link p a {
-    color: #000000;
+    color: #ffffff;
     text-decoration: none;
     font-weight: 600;
 }
 .register-link p a:hover{
     text-decoration: underline;
-    color: #ffffff;
+    color: #070707;
 }
