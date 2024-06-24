@@ -95,14 +95,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
         console.error("Error al obtener los productos", error);
     }
-    
 });
 
 
 // FINAL DE RENDERIZADO DE PRODUCTOS DE LA API
-
-//categorias
-
-
-
-
