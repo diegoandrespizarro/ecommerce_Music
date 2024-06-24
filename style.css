@@ -748,6 +748,13 @@
     flex-direction: column;
     width: 25%;
 }
+<<<<<<< HEAD
+
+
+/*categoria*/
+
+
+=======
 /*CARRUSEL DE MARCAS*/
 @keyframes slide{
     from{
@@ -791,3 +798,4 @@
     margin: 0 40px;
   }
   /*FIN CARRUSEL DE MARCAS*/
+>>>>>>> 679637fa8caaedfd87c41ad8a2465664c9343b86
