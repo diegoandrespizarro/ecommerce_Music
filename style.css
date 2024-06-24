@@ -100,6 +100,12 @@
     align-items: center;
     align-content: center;
 }
+.carritoContenedor{
+    color: red;
+}
+.carritoCantidadGreen{
+    color: green;
+}
 .navbar-brand{
     width: 10%;
 }
