@@ -100,3 +100,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 // FINAL DE RENDERIZADO DE PRODUCTOS DE LA API
+
+//categorias
+
+
+
+
