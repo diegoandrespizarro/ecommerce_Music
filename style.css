@@ -742,6 +742,49 @@
     flex-direction: column;
     width: 25%;
 }
+/*CARRUSEL DE MARCAS*/
+@keyframes slide{
+    from{
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  .carousel-sponsors{
+    overflow: hidden;
+    padding: 60px 0;
+    white-space: nowrap;
+    position: relative;
+  }
+  .carousel-sponsors:before,
+  .carousel-sponsors:after{
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    content: "";
+    z-index: 2;
+  }
+  .carousel-sponsors:before { 
+    left: 0;
+  }
+  .carousel-sponsors:after{
+    right: 0;
+  }
+  .carousel-sponsors{
+    animation-play-state: paused;
+  }
+  .logos-slide {
+    display: inline-block;
+    animation: 50s slide infinite linear;
+  }
+  .logos-slide img{
+    border-radius: 5px;
+    height: 50px;
+    margin: 0 40px;
+  }
+  /*FIN CARRUSEL DE MARCAS*/
 /* sobre nosotros */
 .col-md-6 img{
     width: 400px;
