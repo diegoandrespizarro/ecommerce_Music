@@ -18,7 +18,7 @@ document.addEventListener('click', async (event) => {
             title: "Su producto fue agregado al carrito",
             showConfirmButton: false,
             timer: 1500
-        });
+          });
         // Verificar si el producto ya está en el carrito
         let productoEnCarrito = false;
         const productosEnCarrito = carritoProductos.querySelectorAll('.carrito-producto');
@@ -46,13 +46,12 @@ document.addEventListener('click', async (event) => {
                             <i class="bi bi-dash-circle"></i><p>1</p><i class="bi bi-plus-circle"></i><i class="bi bi-trash3-fill"></i>
                         </div>
                     </div>
-                    <div class="card-precio" style="display:none;">${precio}</div>
+                    <div class="card-precio" style="display: none;">${precio}</div>
                 </div>
             `;
 
             carritoProductos.innerHTML += productCard;
         }
-       
     }
 });
 
@@ -92,22 +91,7 @@ document.addEventListener('click', (event) => {
     }
     guardarCarritoLocalStorage();
 });
-//PONER LA CANTIDAD DE PRODUCTOS QUE HAY DENTRO DEL CARRITO EN EL LOGO DEL CARRITO 
 
-const carritoCantidad = document.getElementById('carritoCantidad');
-const productosEnCarrito = JSON.parse(localStorage.getItem('productosEnCarrito'));
-
-document.addEventListener (`DOMContentLoaded`,function(event) {
-    event.preventDefault();
-    const productosEnCarrito = JSON.parse(localStorage.getItem('productosEnCarrito'));
-    let cantidad = 0;
-    productosEnCarrito.forEach((producto) => {
-        cantidad += parseInt(producto.cantidad);
-    });
-    carritoCantidad.textContent = cantidad;
-    if (cantidad > 0)
-    carritoCantidad.classList.add(`carritoCantidadGreen`)
-});
 
 //ALERTA PARA FINALIZAR LA COMPRA
 const FinalizarCompra = document.getElementById("FinalizarCompra");
@@ -169,12 +153,9 @@ const cargarCarritoLocalStorage = () => {
             `;
             carritoProductos.innerHTML += productCard;
         }
-        
         );
-        
     }
 }
-
 cargarCarritoLocalStorage();
 
 //GUARDAR EN LOCALSTORAGE LOS PRODUCTOS DEL CARRITO
@@ -206,19 +187,16 @@ const cargarCarritoLocalStorageCart = () => {
                             <i class="bi bi-dash-circle"></i><p>${producto.cantidad}</p><i class="bi bi-plus-circle"></i><i class="bi bi-trash3-fill"></i>
                             </div>
                         </div>
-                        <div class="card-precio-resumen" style="display:none ;">${producto.precio}</div>
+                        <div class="card-precio-resumen" style="display: ;">${producto.precio}</div>
                     </div>
                 </div>
             </tr>
             `;
             carritoProductosCart.innerHTML += productCard;
         }
-        
         );
-        
     }
-};
-
+}
 cargarCarritoLocalStorageCart();
 
 

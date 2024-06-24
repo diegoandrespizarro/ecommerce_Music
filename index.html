@@ -59,7 +59,7 @@
                     <button class="navbar-toggler contenedorPrincipalCarrito" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
                         aria-label="Toggle navigation">
-                        <span class="bi bi-cart carritoContenedor" id="carritoCantidad"><p class="numeroCarrito"></p></span>
+                        <span class="bi bi-cart carritoContenedor" id="carritoCantidad"></span>
                     </button>
                 </div>
                 <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasNavbar"
@@ -87,7 +87,7 @@
                     <div class="mini-cart-footer">
                         <div class="mini-cart-total">
                             <div class="mini-cart-total-title">Total</div>
-                            <div class="mini-cart-total-price card-precio" id="totalCompra"></div>
+                            <div class="mini-cart-total-price card-precio" id="totalCompra">$0.00</div>
                         </div>
                         <a href="/pages/cart.html" class="btn btn-primary btn-block mini-cart-btn" >Iniciar
                             compra</a>
@@ -164,15 +164,69 @@
 
         <!-- CATEGORIAS DE PRODUCTOS-->
 
-        <h1 class="title-categories">CATEGORIAS</h1>
+        <h1 class="title-categories">PRODUCTOS</h1>
 
     <!-- ACA DEJO EL CONTENEDOR PARA LAS CARD -->
+
     <div class="container mt-5 contenedorDeProductos">
-        <h1 class="mb-4">Productos</h1>
         <div id="product-list" class="row">
-            
         </div>
     </div>
+  
+    <!-- CARRUSEL DE MARCAS -->
+    <div class="carousel-sponsors">
+        <div class="logos-slide">
+          <img
+            src="https://www.heavenimagenes.com/heavencommerce/43ff3c3d-fe3a-4118-ad1c-e1be4cd5df9b/logos/v2/LA%20ALPUJARRA/31.jpg"
+            alt="LaAlpujarra_logo"
+          />
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRML8k70XbHhW9D5H1hQQZpB-H0qbYjb0g3uw&s"
+            alt="Yamaha_logo"
+          />
+          <img
+            src="data:image/png;base64,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"
+            alt=""
+          />
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1ytQASvmoohgTYK6q7r-WYyDgnOHw_DITvw&s"
+            alt="CfMartin_logo"
+          />
+          <img
+            src="https://media.sweetwater.com/m/products/image/7654828619j2Gt1JfVfPQgXKR7Ek1oxoEiAMCSIT.jpg?quality=82&height=750&ha=76548286194f40ac"
+            alt="Gibson_logo"
+          />
+          <img
+            src="https://e7.pngegg.com/pngimages/201/728/png-clipart-headphones-app-store-headphones-electronics-text-thumbnail.png"
+            alt="Jbl_logo"
+          />
+          <img
+            src="https://www.manual.ar/thumbs/brands/l/970-hohner_logo.webp"
+            alt="Hohner_logo"
+          />
+          <img
+            src="https://i.pinimg.com/736x/5git pula/4d/05/5a4d0544369809769a2bdd80e4697b18.jpg"
+            alt="Pionner_logo"
+          />
+          <img
+            src="data:image/png;base64,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"
+            alt="korg_logo"
+          />
+    <!-- Sobre nosotros -->
+    <section id="sobreNosotros">
+        <div class="container">
+            <h2 class="text-center my-5">Sobre nosotros</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p><strong> Creado en 2024, The Music House es una casa de música líder en instrumentos musicales y equipamiento de audio profesional. Somos mucho más que una casa de ventas de instrumentos musicales; somos el corazón vibrante de la comunidad musical en nuestra región. En nuestro espacio acogedor y lleno de pasión, nos dedicamos a proporcionar a músicos de todos los niveles y estilos los instrumentos y equipos necesarios para inspirar y potenciar su creatividad.</strong></p>
+                </div>
+                <div class="col-md-6 text-center">
+                    <img class="img-fluid" src="/assets/2_sinFondo.png" alt="logo_TheMusicHouse">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- fin Sobre nosotros -->
     <!-- CARRUSEL DE MARCAS -->
     <div class="carousel-sponsors">
         <div class="logos-slide">
@@ -293,6 +347,7 @@
         </div>
       </div>
       <!-- FIN CARRUSEL DE MARCAS -->
+    
     <script src="./script.js"></script>
     <script src="./js/cart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
