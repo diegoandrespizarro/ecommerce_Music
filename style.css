@@ -566,6 +566,8 @@
     width: 100%;
     height: auto;
     text-align: center;
+    display: flex;
+    flex-direction: row;
 }
 
 .carrito-producto-imagen {
@@ -791,3 +793,6 @@
     margin: 0 40px;
   }
   /*FIN CARRUSEL DE MARCAS*/
+
+
+  /*productos*/

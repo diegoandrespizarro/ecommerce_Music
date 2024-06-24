@@ -103,6 +103,3 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 //categorias
 
-
-
-
