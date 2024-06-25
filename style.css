@@ -90,9 +90,14 @@
     border: none; /* Eliminar el borde */
     outline: none; /* Eliminar el contorno de enfoque */
 }
+
+.green{
+    color: green;
+}
 .carritoContenedor{
-    font-size: 30px;
+    font-size: 25px;
     margin-left: 20px;
+    font-weight: 500;
 }
 .ContenedorProductoNav{
     display: flex;
@@ -539,6 +544,11 @@
         font-size: 8px;
         margin-bottom: 4px;
     }
+    .carritoContenedor{
+        display: flex;
+        font-size: 20px;
+        font-weight: 500;
+    }
 }
 @media screen and (max-width: 600px){
     .contenedorTabla{
@@ -670,6 +680,7 @@
     }
 }
 /* FIN DE CARD DE PRODUCTOS DE CARRITO  */
+
 /* CSS CARRITO RESUMEN */
 .contenedor-producto-resumen{
     width: 100%;
@@ -744,6 +755,96 @@
     flex-direction: column;
     width: 25%;
 }
+@media screen and (max-width: 999px){
+    .contenedor-producto-resumen{
+        width: 100%;
+    }
+    .carrito-producto-resumen{
+        width: 100%;
+    }
+    .contenedor-resumen-ventas{
+        width: 100%;
+    }
+    .mini-cart-total-resumen{
+        margin: 0;
+    }
+    .btn-resumen-compra{
+        width: 100%;
+        margin: 5px;
+        padding: 5px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-right: 50px;
+        a{
+            width: 200px;
+            margin: 10px;
+            padding: 5px;
+        }
+    }
+}
+@media screen and (max-width: 600px){
+    .contenedor-producto-resumen{
+        width: 100%;
+    }
+    .carrito-producto-resumen{
+        width: 100%;
+    }
+    .contenedor-resumen-ventas{
+        width: 100%;
+    }
+    .mini-cart-total-resumen{
+        margin: 0;
+    }
+    .btn-resumen-compra{
+        width: 100%;
+        margin: 5px;
+        padding: 5px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-right: 50px;
+        a{
+            width: 150px;
+            margin: 10px;
+            padding: 5px;
+        }
+    }
+    .carrito-producto-titulo-resumen{
+        display: flex;
+        width: 100%;
+        margin: 20px;
+        padding: 20px;
+        h1,h3{
+            font-size: 10px;
+            text-align: justify;
+        }
+    }
+    .card-precio-resumen{
+        margin: 30px;
+        display: flex;
+        justify-content: center;
+    }
+    .contenedor-resumen-ventas{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        align-items: end;
+        align-content: end;
+        border-top: 1px solid #000;
+    }
+    .card-img-top-resumen{
+        width: 12%;
+    }
+    .card-precio-resumen{
+        font-size: 12px;
+    }
+    .suma-resta-productos{
+        font-size: 12px;
+    }
+}
+
 /*CARRUSEL DE MARCAS*/
 @keyframes slide{
     from{
