@@ -1,0 +1,191 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* inicia la navbar */
+.headerContenedor{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.navbar{
+    width: 95%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #000;
+    background-color:rgb(255,255,255);
+}
+.logoNav{
+    width: 70%;
+    height: auto;
+}
+
+.header__top {
+    background: #000;
+    margin: 0;
+    padding: 0;
+    height: 30px;
+    color: white;
+    span{
+        display: flex;
+        justify-content: center;
+    }
+}
+.ContenedorProductoNav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    a{
+        margin: 10px;
+        text-decoration: none;
+        color: #000;
+    }
+}
+.ContendorDropdown{
+    list-style: none;
+    margin: 15px;
+}
+.dropdown-menu {
+    z-index: 2000;
+}
+
+.AyudaContenedor{
+    margin-left: 10px;
+    li{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        list-style: none;
+    }
+    i{
+        font-size: 15px;
+        text-align: center;
+        padding: 5px;
+    }
+
+}
+.ContendorContacto{
+    width: 264px;
+    height: 150px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+.ChatDrop{
+    padding-left: 5px;
+}
+.header__bottom__marcas__cont {
+    display: flex;
+    flex-direction: column;
+}
+.header__ayuda__hrs {
+    margin-top: 15px;
+}
+.contenedorPrincipalCarrito{
+    border: none; /* Eliminar el borde */
+    outline: none; /* Eliminar el contorno de enfoque */
+}
+
+.green{
+    color: green;
+}
+.carritoContenedor{
+    font-size: 25px;
+    margin-left: 20px;
+    font-weight: 500;
+}
+.ContenedorProductoNav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.navbar-brand{
+    width: 10%;
+}
+.contendorCarritoCuenta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon-usuario::before{
+    content: 'Mi cuenta'; 
+}   
+/* termina la navbar */
+
+/*Forms*/
+
+body{
+    background: url(/assets/fondo\ de\ formulario.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+}
+.container-form-contact .form .form-title .form-contact{
+    font-weight: normal;
+    font-family: 'Poppins', sans-serif;
+    color: rgb(112, 216, 112);
+    text-align: center;
+    padding: 14px 0;
+}
+.container-form-contact .form .form-title .form-contact span{
+    color: rgb(12, 11, 10);
+}
+
+.container-form-contact .form{
+    background: rgb(57, 68, 67);
+    width: 98%;
+    max-width: 650px;
+    margin: auto;
+    padding: 5px 35px;
+    margin-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 3px;
+}
+
+.container-form-contact .form .form-label{
+    display: block;
+    color: rgb(3, 0, 5);
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+}
+.container-form-contact .form .form-input, .form-textarea{
+    background: rgb(2, 2, 1);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgb(112, 216, 112);
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 2px;
+    font-size: 12px;
+    color: rgb(240, 241, 247);
+    font-family: 'Poppins', sans-serif;
+}
+.container-form-contact .form .form-textarea{
+    resize: vertical;
+    max-height: 150px;
+    min-height: 50px;
+}
+.container-form-contact .form .btn-submit{
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    background: #000000;
+    font-size: 16px;
+    border: none;
+    color: #fdfdfd;
+    padding: 15px o;
+    cursor: pointer;  
+    transition: all .5s ease;  
+}
+.container-form-contact .form .btn-submit:hover {
+    background: rgb(112, 216, 112);
+    color: #000;
+}
