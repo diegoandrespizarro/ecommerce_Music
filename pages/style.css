@@ -189,3 +189,92 @@ body{
     background: rgb(112, 216, 112);
     color: #000;
 }
+/* Responsive Design */
+
+@media screen and (max-width: 999px){
+    .header__top {
+        font-size: 10px;
+    }
+    .headerContenedor{
+        width: 100% !important;
+        display: flex;
+    }
+    .navbarContenedor{
+        width: 100% !important;
+        display: flex;
+    }
+    .navbar{
+        width: 100% !important;
+    }
+    .navbar-brand{
+        display: flex;
+        justify-content: center;
+    }
+    .ContenedorProductoNav{
+        width: 100%;
+        font-size: 3px;
+    }
+    .logoNav{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .contenedorPrincipalCarrito{
+        width: 10%;
+    }
+    .ContenedorProductoNav{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        font-size: 12px;
+        width: 30%;
+    }
+    .navbar-brand{
+        width: 15%;
+    }
+    .contendorCarritoCuenta{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40%;
+    }
+    .AyudaContenedor{
+        display: none;
+    }
+    .nuevoProducto{
+        font-size: 10px;
+        white-space: nowrap;
+        text-align: center;
+    }
+    .bi-person-circle{
+        font-size: 22px;
+    }
+    .icon-usuario::before{
+        content: ''; 
+    } 
+}
+
+.list .item .content{
+    left: 50px;
+}
+
+.content .title, .content{
+    font-size: 70px;
+}
+
+.content .des{
+    font-size: 16px;
+}
+
+
+@media screen and (max-width: 680px){
+
+.list .item .content{
+    top: 40%;
+}
+.content .title{
+    font-size: 45px;
+}
+
+}
