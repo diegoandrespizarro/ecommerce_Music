@@ -28,16 +28,18 @@ async function login() {
     if (user) {
         if (user.password === password) {
             // Login exitoso, redirigir al index
+            if (user.role === 'admin') {
+                localStorage.setItem('role', 'admin');
+            } else {
+                localStorage.setItem('role', 'user');
+            }
+
             window.location.href = '/index.html';
-           document.addEventListener('DOMContentLoaded',function(){
-            const nuevoProducto = document.querySelector('a.nuevoProducto');
-            nuevoProducto.classList.add('nuevoProductoAdmin')
-           })
         } else {
             showError('Correo o Contraseña incorrecto');
         }
     } else {
-        showError('Correo o contraseña incorrecto');
+        showError('Correo o Contraseña incorrecto');
     }
 }
 
@@ -45,3 +47,14 @@ function showError(message) {
     const messageElement = document.getElementById('message');
     messageElement.textContent = message;
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const role = localStorage.getItem('role');
+    const nuevoProducto = document.getElementById('botonNuevoProducto');
+    
+    if (role === 'admin') {
+        nuevoProducto.style.display = 'inline';
+    } else {
+        nuevoProducto.style.display = 'none';
+    }
+});
