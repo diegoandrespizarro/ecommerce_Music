@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <td>${product.descripcion}</td>
                     <td>
                         <button class="btn btn-danger delete-product" data-id="${product.id}">Eliminar</button>
-                        <button class="btn btn-success modificar-product" modal-dialog modal-dialog-centered modal-dialog-scrollable data-id="${product.id}">Editar</button>
+                        <button type="button" class="btn btn-primary modificar-product" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="${product.id}">Modificar</button>
                     </td>
                 </tr>
             `;
@@ -130,5 +130,81 @@ document.addEventListener('click', async (event) => {
     }
 });
 
+//MODIFICAR PRODUCTOS DE LA TABLA
+const productTitleMODIF = document.getElementById('productTitleMODIF');
+const productCatMODIF = document.getElementById('productCatMODIF');
+const productDescriptionMODIF = document.getElementById('productDescriptionMODIF');
+const productPriceMODIF = document.getElementById('productPriceMODIF');
+const productImageMODIF = document.getElementById('productImageMODIF');
+
+document.addEventListener('click', async (event) => {
+    if (event.target.classList.contains('modificar-product')) {
+        const productId = event.target.getAttribute('data-id');
+        const response = await fetch(`${urlProducts}/${productId}`);
+        const product = await response.json();
+        
+        productTitleMODIF.value = product.title;
+        productCatMODIF.value = product.categoria;
+        productDescriptionMODIF.value = product.descripcion;
+        productPriceMODIF.value = product.precio;
+        productImageMODIF.value = product.imageUrl;
+        updateForm.setAttribute('data-id', productId);
+         
+    }
+});
+
+
+
+
+
+
+
+
+
+//FUNCION PARA ACTUALIZAR PRODUCTOS
+const updateForm = document.getElementById('updateForm');
+
+updateForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const title = productTitleMODIF.value.trim();
+    const categoria = productCatMODIF.value.trim();
+    const descripcion = productDescriptionMODIF.value.trim();
+    const precio = parseFloat(productPriceMODIF.value.trim());
+    const imageUrl = productImageMODIF.value.trim();
+    const productId = event.target.getAttribute('data-id');
+    
+    const updatedProduct = {
+        title: title,
+        categoria: categoria,
+        descripcion: descripcion,
+        precio: precio,
+        imageUrl: imageUrl
+    };
+    try {
+        const response = await fetch(`${urlProducts}/${productId}`, {
+            method: 'PUT',
+            body: JSON.stringify(updatedProduct),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if (response.ok) {
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Su producto fue actualizado exitosamente",
+                showConfirmButton: false,
+                timer: 1500
+              });
+            setTimeout(() => {
+                window.location.href = '/pages/addproduct.html';
+            }, 1500);
+        } else {
+            alert("Error al actualizar el producto", response.statusText);
+        }
+    } catch (error) {
+        alert("Error al enviar el producto", error);
+    }
+});
 
 
