@@ -896,3 +896,8 @@
     margin-left: 5px;
 }
 /*FIN sobre nosotros */
+.divider {
+    height: 1px;
+    background: linear-gradient(to right,#fff, #ccc,#ccc, #333,#ccc, #ccc,#fff);
+    margin: 20px 0;
+}
