@@ -15,7 +15,7 @@ document.addEventListener('click', async (event) => {
         const imageUrl = productCard.querySelector('.carrito-producto-imagen') ? productCard.querySelector('.carrito-producto-imagen').getAttribute('src') : '';
 
         console.log("este es el precio",typeof precioNumber, precioNumber)
-        isNaN(precioNumber) ? alert("No se puede agregar al carrito") : null;
+        
         Swal.fire({
             position: "top-end",
             icon: "success",
@@ -223,8 +223,6 @@ const cargarCarritoLocalStorageCart = () => {
 cargarCarritoLocalStorageCart();
 
 
-
-
 //mostrar la cantidad de productos aderidos al carrito(Falta terminar)
 const carritoCantidad = document.getElementById('carritoCantidad');
 
@@ -236,6 +234,11 @@ const actualizarCantidadCarrito = () => {
         cantidad += parseInt(producto.cantidad);
     });
     carritoCantidad.textContent = cantidad;
+    if (cantidad > 0) {
+        carritoCantidad.classList.add('green');
+    } else {
+        carritoCantidad.classList.remove('green');
+    }
     localStorage.setItem('carritoCantidad', cantidad);
 };
 
@@ -245,6 +248,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const cantidadGuardada = localStorage.getItem('carritoCantidad');
     if (cantidadGuardada) {
         carritoCantidad.textContent = cantidadGuardada;
+        if (parseInt(cantidadGuardada) > 0) {
+            carritoCantidad.classList.add('green');
+        }
     }
     actualizarCantidadCarrito();
 });
