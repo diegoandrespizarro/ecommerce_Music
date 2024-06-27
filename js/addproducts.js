@@ -5,6 +5,7 @@ const productCat = document.getElementById("productCat");
 const productPrice = document.getElementById("productPrice");
 const productDescription = document.getElementById("productDescription");
 const productImage = document.getElementById("productImage");
+const productStock = document.getElementById("productStock");
 const urlProducts = `https://6668e555f53957909ff96e69.mockapi.io/api/Products`;
 
 submitForm.addEventListener(`submit`, async (event) => {
@@ -15,13 +16,15 @@ submitForm.addEventListener(`submit`, async (event) => {
     const descripcion = productDescription.value.trim();
     const precio = parseInt(productPrice.value.trim());
     const imageUrl = productImage.value.trim();
+    const stock = parseInt(productStock.value.trim());
     
     const newProduct = {
         title: title,
         categoria: categoria,
         descripcion: descripcion,
         precio: precio,
-        imageUrl: imageUrl
+        imageUrl: imageUrl,
+        stock: stock
     };
 
     try {
@@ -68,6 +71,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const productCard = `
                 <tr>
                     <td>${product.id}</td>
+                    <td>${product.stock}</td>
                     <td>${product.title}</td>
                     <td>${product.categoria}</td>
                     <td>${product.precio}</td>
@@ -135,6 +139,7 @@ const productTitleMODIF = document.getElementById('productTitleMODIF');
 const productCatMODIF = document.getElementById('productCatMODIF');
 const productDescriptionMODIF = document.getElementById('productDescriptionMODIF');
 const productPriceMODIF = document.getElementById('productPriceMODIF');
+const productStockMODIF = document.getElementById('productStockMODIF');
 const productImageMODIF = document.getElementById('productImageMODIF');
 
 document.addEventListener('click', async (event) => {
@@ -147,6 +152,7 @@ document.addEventListener('click', async (event) => {
         productCatMODIF.value = product.categoria;
         productDescriptionMODIF.value = product.descripcion;
         productPriceMODIF.value = product.precio;
+        productStockMODIF.value = product.stock;
         productImageMODIF.value = product.imageUrl;
         updateForm.setAttribute('data-id', productId);
          
@@ -163,6 +169,7 @@ updateForm.addEventListener('submit', async (event) => {
     const descripcion = productDescriptionMODIF.value.trim();
     const precio = parseFloat(productPriceMODIF.value.trim());
     const imageUrl = productImageMODIF.value.trim();
+    const stock = parseInt(productStockMODIF.value.trim());
     const productId = event.target.getAttribute('data-id');
     
     const updatedProduct = {
@@ -170,6 +177,7 @@ updateForm.addEventListener('submit', async (event) => {
         categoria: categoria,
         descripcion: descripcion,
         precio: precio,
+        stock: stock,
         imageUrl: imageUrl
     };
     try {
