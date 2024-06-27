@@ -896,8 +896,100 @@
     margin-left: 5px;
 }
 /*FIN sobre nosotros */
+/* Linea divisora */
 .divider {
     height: 1px;
     background: linear-gradient(to right,#fff, #ccc,#ccc, #333,#ccc, #ccc,#fff);
     margin: 20px 0;
 }
+/* fin de linea divisora */
+/* footer */
+footer {
+    margin-top: auto;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    background-image: url(./assets/footer3.avif);
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center; 
+}
+
+footer p {
+    margin: 0;
+    background-image: url();
+}
+.logofooter{
+    width: 200px;
+    height: 180px;
+}
+.logofooter:hover{
+    transition: 0.3s, transform 0.3s;
+    transform: scale(1.1);
+}
+#icon-container {
+    margin-top: 1em;
+}
+
+#icon-container i {
+    margin: 0 10px;
+    color: white;
+    font-size: 1.5em;
+    transition: color 0.3s;
+
+}
+
+#icon-container i:hover {
+    color: #ddd;
+}
+
+.red-social {
+    display: flex;
+    justify-content: center; 
+    flex-wrap: wrap; 
+    margin-top: 1em;
+}
+
+.red-social-item {
+    margin: 1px; 
+    text-align: center;
+    flex: 1 1 calc(33.333% - 2em); 
+    box-sizing: border-box;
+}
+
+.red-social-item .nombre {
+    display: block;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 23px;
+}
+
+.red-social-item a {
+    margin: 0 30px;
+    color: white;
+    font-size: 40px;
+    transition: 0.3s, transform 0.3s; 
+    text-decoration: none;
+    margin-bottom: 30px;
+}
+
+.red-social-item a:hover {
+    color: #218da0;
+    transform: scale(1.2); 
+}
+
+
+/* Media Queries para responsive */
+@media (max-width: 768px) {
+    .red-social-item {
+        flex: 1 1 calc(50% - 2em); 
+    }
+}
+
+@media (max-width: 480px) {
+    .red-social-item {
+        flex: 1 1 100%; 
+    }
+}
+/* fin de footer */
