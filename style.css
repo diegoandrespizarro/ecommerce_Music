@@ -115,6 +115,20 @@
 }
 .icon-usuario::before{
     content: 'Mi cuenta'; 
+}
+@media screen and (max-width: 680px){
+    
+    .btnContacto{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2px;
+        font-size: 12px;
+    }
+    .bi-telephone{
+        margin-left: 5px;
+    }
+
 }   
 /* termina la navbar */
 
@@ -576,7 +590,7 @@
 }
 .carrito-producto-imagen {
    width: 100%;
-   height: 220px;
+   height: 190px;
    object-fit: cover;
    display: flex;
    justify-content: center;
@@ -639,6 +653,10 @@
             font-size:15px;
         }
     }
+    .carrito-producto-imagen{
+        width: 100%;
+        height: 140px;
+    }
     .agregarAlCarrito{
         width: 100%;
         height: 30px;
@@ -647,6 +665,12 @@
     }
     .shadow-sm{
         width: 100%;
+    }
+    .card-body {
+        width: 100%;
+        height: 50%;
+        border-radius: 0 0 10px 10px; /* Bordes redondeados solo en la parte inferior */
+        font-size: 8px;
     }
 }
 @media screen and (max-width: 600px){
@@ -672,7 +696,7 @@
     }
     .carrito-producto-imagen {
         width: 100%;
-        height: 140px;
+        height: 120px;
         object-fit: cover;
      }
      .card-body {
