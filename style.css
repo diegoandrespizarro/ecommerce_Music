@@ -925,14 +925,14 @@
 /* fin de linea divisora */
 /* footer */
 footer {
-    margin-top: auto;
+    margin-top: 20px;
     background-color: #333;
     color: white;
     text-align: center;
     padding: 1em 0;
-    background-image: url(./assets/footer3.avif);
-    background-repeat: no-repeat; 
-    background-size: cover; 
+    background-image: url(./assets/footer3-jpg.jpg);
+    /* background-repeat: no-repeat;  */
+    /* /* background-size: cover;  */
     background-position: center; 
 }
 
