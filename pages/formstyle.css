@@ -1,11 +1,7 @@
 /*Forms*/
 
 body{
-    /*background: url(./login/assets/imagen\ musical\ 2.jpg);*/
-    background-size: cover;
-    background-attachment: fixed;
-    -webkit-background-size: cover;
-    background: slategrey;
+    background: #fdfdfd;
 }
 .container-form-contact .form .form-title .form-contact{
     font-weight: normal;
@@ -70,24 +66,4 @@ body{
 .container-form-contact .form .btn-submit:hover {
     background: rgb(112, 216, 112);
     color: #000;
-}
-/*
-.form-select{
-    display: block;
-    color: rgb(3, 0, 5);
-    font-size: 16px;
-    font-family: 'Poppins', sans-serif;
-    position: relative;
-    border: none;
-    outline: none;
-    border-bottom: 2px solid rgb(112, 216, 112);
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border-radius: 2px;
-    font-size: 12px;
-    color: rgb(100, 117, 116);
-    font-family: 'Poppins', sans-serif;
-    background: rgb(2, 2, 1);
-
 }
