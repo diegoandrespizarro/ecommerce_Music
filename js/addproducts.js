@@ -13,9 +13,9 @@ submitForm.addEventListener(`submit`, async (event) => {
     const title = productTitle.value.trim();
     const categoria = productCat.value.trim();
     const descripcion = productDescription.value.trim();
-    const precio = parseFloat(productPrice.value.trim());
+    const precio = parseInt(productPrice.value.trim());
     const imageUrl = productImage.value.trim();
-
+    
     const newProduct = {
         title: title,
         categoria: categoria,
@@ -152,14 +152,6 @@ document.addEventListener('click', async (event) => {
          
     }
 });
-
-
-
-
-
-
-
-
 
 //FUNCION PARA ACTUALIZAR PRODUCTOS
 const updateForm = document.getElementById('updateForm');
