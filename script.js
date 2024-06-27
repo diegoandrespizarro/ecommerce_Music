@@ -73,30 +73,36 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Hacer una petición para obtener todos los productos
         const response = await fetch(urlProducts);
         const products = await response.json();
-
+        
         // Recorrer cada producto y renderizarlo en el DOM
         products.forEach(product => {
+            const truncatedDescription = product.descripcion.length > 20 ? `${product.descripcion.substring(0, 20)}...` : product.descripcion;
+            const truncateTitle = product.title.length > 20 ? `${product.title.substring(0, 15)}...` : product.title;
             const productCard = `
                 <div class="col-md-4 contendor-Productos">
                     <div class="card mb-4 shadow-sm">
                         <img class="carrito-producto-imagen" src="${product.imageUrl}" alt="${product.title}">
                         <div class="card-body">
-                            <h5 class="card-title">${product.title}</h5>
-                            <p class="card-text">${product.descripcion}</p>
-                            <p class="card-precio"><strong>Precio:</strong> $${product.precio}</p>
+                            <h5 class="card-title">${truncateTitle}</h5>
+                            <p class="card-text">${truncatedDescription}</p>
+                            <p class="card-precio"><strong>Precio:</strong> $${parseInt(product.precio)}</p>
                             <p class="card-stock">Stock: ${product.stock}</p>
                             <button class="btn btn-primary agregarAlCarrito">Agregar al carrito</button>
                         </div>
                     </div>
                 </div>
             `;
+            
             productList.innerHTML += productCard;
+           
         });
-
+        
     } catch (error) {
         console.error("Error al obtener los productos", error);
     }
 });
+//EL TITULO DE LA TARJETA DEL PRODUCTO SOLO PUEDE TENER 20 CARACTERES
+
 
 
 // FINAL DE RENDERIZADO DE PRODUCTOS DE LA API

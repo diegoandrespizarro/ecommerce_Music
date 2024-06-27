@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <td>${product.stock}</td>
                     <td>${product.title}</td>
                     <td>${product.categoria}</td>
-                    <td>${product.precio}</td>
+                    <td>$${parseInt(product.precio)}</td>
                     <td><img src="${product.imageUrl}" alt="${product.title}" width="50"></td>
                     <td>${product.descripcion}</td>
                     <td>
@@ -167,7 +167,7 @@ updateForm.addEventListener('submit', async (event) => {
     const title = productTitleMODIF.value.trim();
     const categoria = productCatMODIF.value.trim();
     const descripcion = productDescriptionMODIF.value.trim();
-    const precio = parseFloat(productPriceMODIF.value.trim());
+    const precio = parseInt(productPriceMODIF.value.trim());
     const imageUrl = productImageMODIF.value.trim();
     const stock = parseInt(productStockMODIF.value.trim());
     const productId = event.target.getAttribute('data-id');
