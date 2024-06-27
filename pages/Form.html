@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="/assets/guitarra-electrica.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>TheMusicHouse</title>
@@ -100,23 +101,23 @@
         </nav>
     </header>
 
-    <div class="container-form-contact">
+    <section class="container-form-contact">
         <form action="" class="form">
             <div class="form-title">
                 <h1 class="form-contact">C<span>ontacto</span></h1>
             </div>
 
-            <label for="nombre" class="form-label">Nombre Completo</label>
-            <input type="text" id="nombre" class="form-input" placeholder="Escriba su nombre completo">
+            <label for="task-name" class="form-label">Nombre Completo</label>
+            <input type="text" id="task-name" class="form-input" placeholder="Escriba su nombre completo">
 
-            <label for="email" class="form-label">Email</label>
-            <input type="text" id="email" class="form-input" placeholder="Escriba su email">
+            <label for="task-email" class="form-label">Email</label>
+            <input type="text" id="task-email" class="form-input" placeholder="Escriba su email">
 
-            <label for="asunto" class="form-label">Asunto</label>
-            <input type="text" id="asunto" class="form-input" placeholder="Escriba el asunto">
+            <label for="task-affair" class="form-label">Asunto</label>
+            <input type="text" id="task-affair" class="form-input" placeholder="Escriba el asunto">
 
-            <label for="comentario" class="form-label">Comentario</label>
-            <textarea id="comentario" class="form-textarea" placeholder="Aqui escriba su cometario"></textarea>
+            <label for="task-comment" class="form-label">Comentario</label>
+            <textarea id="task-comment" class="form-textarea" placeholder="Aqui escriba su cometario"></textarea>
 
             <input type="submit" class="btn-submit" value="Enviar consulta">
 
@@ -131,9 +132,14 @@
  <p>&copy; <span id="current-year"></span> The House Music. Todos los derechos reservados.</p>
 </footer>
  <!-- FIN DE FOOTER -->
-    <script src="./script.js"></script>
+ 
+=======
+    </section>
+
+    <script src="/script.js"></script>
+
     <script src="/js/addproducts.js"></script>
-    <script src="./js/cart.js"></script>
+    <script src="/js/cart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

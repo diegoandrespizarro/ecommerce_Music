@@ -12,7 +12,7 @@
     margin-bottom: 10px;
 }
 .navbar{
-    width: 95%;
+    width: 100%;
     height: auto;
     padding: 0;
     margin: 0;
@@ -572,20 +572,26 @@
     text-align: center;
     display: flex;
     flex-direction: row;
+    
 }
-
 .carrito-producto-imagen {
    width: 100%;
    height: 220px;
    object-fit: cover;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   align-content: center;
 }
 
 .contendor-Productos {
     width: 256px;
-    height: 400px;
+    height: 420px;
     margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     text-align: center;
-    
 }
 
 .shadow-sm {
@@ -606,11 +612,13 @@
     background-color: black; /* Color inicial del botón */
     color: white; /* Color del texto del botón */
     border: none; /* Eliminar borde predeterminado */
-    padding: 8px; /* Añadir relleno para mayor tamaño del botón */
+    padding: 6px; /* Añadir relleno para mayor tamaño del botón */
     cursor: pointer; /* Cambiar el cursor al pasar por encima */
     transition: background-color 0.2s; /* Añadir una transición suave */
 }
-
+.card-precio{
+    font-size: 12px;
+}
 .agregarAlCarrito:hover {
     background-color: #217644; /* Color del botón al pasar el cursor por encima */
 }
@@ -623,7 +631,10 @@
     .contendor-Productos {
         font-size: 12px;
         width: 200px;
-        height: 330px;
+        height: 340px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
         h5{
             font-size:15px;
         }
@@ -642,14 +653,17 @@
     .contendor-Productos {
         font-size: 10px;
         width: 170px;
-        height: 290px;
+        height: 310px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
         h5{
             font-size:15px;
         }
     }
     .agregarAlCarrito{
         width: 100%;
-        height: 40px;
+        height: 30px;
         font-size:10px;
         text-align: center;
     }
@@ -661,6 +675,12 @@
         height: 140px;
         object-fit: cover;
      }
+     .card-body {
+        width: 100%;
+        height: 50%;
+        border-radius: 0 0 10px 10px; /* Bordes redondeados solo en la parte inferior */
+        font-size: 8px;
+    }
 }
 /* CARD DE PRODUCTO EN EL CARRITO  */
 .card-img-top{
