@@ -21,22 +21,16 @@
             <div class="container-fluid headerContenedor">
                 <a class="navbar-brand" href="/index.html"><img src="./assets/2_sinFondo.png" alt="" class="logoNav"></a>
                 <div class="ContenedorProductoNav">
-                    <li class="nav-item dropdown ContendorDropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Categoria
+                    <li class=" ContendorDropdown">
+                        <a class="nav-link " href="#productos" role="button">
+                          Productos
                         </a>
-                        <ul class="dropdown-menu ">
-                            <li><a class="dropdown-item" href="#">Guitarra</a></li>
-                            <li><a class="dropdown-item" href="#">Bateria</a></li>
-                            <li><a class="dropdown-item" href="#">Audio Dj</a></li>
-                        </ul>
                     </li>
                     <a href="/pages/addproduct.html" id="botonNuevoProducto" style="display: none;">Nuevo producto</a>
                     <div class="AyudaContenedor">
                         <li class="nav-item dropdown">
 
-                          <a href="/pages/Form.html" target="_blank">Contacto<i class="bi bi-telephone"></i></a>
+                          <a href="/pages/Form.html" target="">Contacto<i class="bi bi-telephone"></i></a>
                             
                             <a class="nav-link dropdown-toggle text-Ayuda" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,7 +55,7 @@
                     <button class="navbar-toggler contenedorPrincipalCarrito" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
                         aria-label="Toggle navigation">
-                        <span class="bi bi-cart carritoContenedor" id="carritoCantidad"></span>
+                        <span class="bi bi-cart carritoContenedor" id="carritoCantidad">0</span>
                     </button>
                 </div>
                 <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasNavbar"
@@ -171,7 +165,7 @@
     <!-- ACA DEJO EL CONTENEDOR PARA LAS CARD -->
 
     <div class="container mt-5 contenedorDeProductos">
-        <div id="product-list" class="row">
+        <div id="product-list" class="row listadoProducts">
         </div>
     </div>
     <div class="divider"></div>

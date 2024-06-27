@@ -1,6 +1,6 @@
 // RENDERIZAR LOS PRODUCTOS DE LA API EN EL CARRITO Y SI ESTA ESE PRODUCTO LO SUMO O LO AGREGO
 const carritoProductos = document.getElementById('carritoProductos');
-const totalCompra = document.getElementById('totalCompra');
+
 
 
 document.addEventListener('click', async (event) => {
@@ -9,9 +9,11 @@ document.addEventListener('click', async (event) => {
         const product = event.target.closest('.card-body');
         const title = product.querySelector('.card-title').textContent;
         const descripcion = product.querySelector('.card-text').textContent;
-        const precio = parseFloat(product.querySelector('.card-precio').textContent.replace('$', ''));
+        const precio = parseInt(product.querySelector('.card-precio').textContent.replace('$', ''));
         const imageUrl = productCard.querySelector('.carrito-producto-imagen') ? productCard.querySelector('.carrito-producto-imagen').getAttribute('src') : '';
-        console.log(imageUrl)
+
+        console.log("este es el precio",typeof precio)
+        
         Swal.fire({
             position: "top-end",
             icon: "success",
@@ -28,6 +30,7 @@ document.addEventListener('click', async (event) => {
                 let cantidad = producto.querySelector('.suma-resta-productos p');
                 cantidad.textContent = parseInt(cantidad.textContent) + 1;
                 productoEnCarrito = true;
+                cargarCarritoCantidad();
             }
         });
 
@@ -52,6 +55,8 @@ document.addEventListener('click', async (event) => {
 
             carritoProductos.innerHTML += productCard;
         }
+        guardarCarritoLocalStorage();
+        cargarCarritoCantidad();
     }
 });
 
@@ -62,6 +67,7 @@ const vaciarCarrito = document.getElementById('vaciarCarrito');
 vaciarCarrito.addEventListener('click', () => {
     carritoProductos.innerHTML = '';
     guardarCarritoLocalStorage();
+    
 });
 
 //BOTON DE ELIMINAR PRODUCTO DEL CARRITO
@@ -70,6 +76,7 @@ document.addEventListener('click', (event) => {
         event.target.parentElement.parentElement.parentElement.remove();
     }
     guardarCarritoLocalStorage();
+    
 });
 
 //BOTON DE SUMAR PRODUCTO AL CARRITO
@@ -77,8 +84,10 @@ document.addEventListener('click', (event) => {
     if (event.target.classList.contains('bi-plus-circle')) {
         const cantidad = event.target.previousElementSibling;
         cantidad.textContent = parseInt(cantidad.textContent) + 1;
+        
     }
     guardarCarritoLocalStorage();
+    cargarCarritoCantidad();
 });
 
 //BOTON DE RESTAR PRODUCTO AL CARRITO
@@ -90,6 +99,7 @@ document.addEventListener('click', (event) => {
         }
     }
     guardarCarritoLocalStorage();
+    
 });
 
 
@@ -153,14 +163,14 @@ const cargarCarritoLocalStorage = () => {
             `;
             carritoProductos.innerHTML += productCard;
         }
-        );
+    );
     }
 }
 cargarCarritoLocalStorage();
 
 //GUARDAR EN LOCALSTORAGE LOS PRODUCTOS DEL CARRITO
 document.addEventListener('click', (event) => {
-    if (event.target.classList.contains('agregarAlCarrito') || event.target.classList.contains('bi-dash-circle') || event.target.classList.contains('bi-plus-circle') || event.target.classList.contains('bi-trash3-fill')) {
+    if (event.target.classList.contains('agregarAlCarrito') || event.target.classList.contains('bi-dash-circle') || event.target.classList.contains('bi-plus-circle') || event.target.classList.contains('bi-trash3-fill'))  {
         guardarCarritoLocalStorage();
     }
 });
@@ -198,6 +208,59 @@ const cargarCarritoLocalStorageCart = () => {
     }
 }
 cargarCarritoLocalStorageCart();
+
+
+
+
+//mostrar la cantidad de productos aderidos al carrito(Falta terminar)
+const carritoCantidad = document.getElementById('carritoCantidad');
+
+const actualizarCantidadCarrito = () => {
+    const productosEnCarrito = JSON.parse(localStorage.getItem('productosEnCarrito')) || [];
+    let cantidad = 0;
+    productosEnCarrito.forEach((producto) => {
+        cantidad += parseInt(producto.cantidad);
+    });
+    carritoCantidad.textContent = cantidad;
+    localStorage.setItem('carritoCantidad', cantidad);
+};
+
+const cargarCarritoCantidad = () => {
+    actualizarCantidadCarrito();
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Leer la cantidad del localStorage y actualizar el DOM
+    const cantidadGuardada = localStorage.getItem('carritoCantidad');
+    if (cantidadGuardada) {
+        carritoCantidad.textContent = cantidadGuardada;
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
