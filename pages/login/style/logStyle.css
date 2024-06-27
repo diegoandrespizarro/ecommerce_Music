@@ -1,96 +1,112 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
-body{
+
+body {
     display: flex;
+    flex-direction: column; /* Alinear elementos en columna */
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('/pages/login/assets/imagen\ musical\ 2.jpg') no-repeat;
+    background: url('/pages/login/assets/imagen musical 2.jpg') no-repeat;
     background-size: cover;
     background-position: center;
 }
-/* logo */
-.logo img{
-    display: flex;
-    width: 200px;
-    margin-top: -400px;
-    margin-left: -590px;
+
+/* Logo */
+.logo {
+    text-align: center; /* Centrar el logo */
+    margin-top: -400px; /* Ajustar posición vertical */
+    margin-bottom: 20px; /* Espacio inferior */
 }
-/* formulario */
-.wrapper{
+
+.logo img {
+    width: 150px; /* Ajustar tamaño del logo */
+    display: block;
+    margin: 0 auto; /* Centrar horizontalmente */
+}
+
+/* Formulario */
+.wrapper {
+    width: 90%; /* Ancho ajustado para ser responsive */
+    max-width: 520px; /* Ancho máximo del formulario */
     padding: 20px;
-    width: 520px;
-    background-color: transparent;
-    color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+    color: #ffffff;
     border-radius: 10px;
-    margin-top: 100px;
     border: 2px solid rgba(255, 255, 255, 0.5);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(5px);
+    order: 2; /* Cambiar orden en pantallas pequeñas */
 }
 
-.wrapper h1{
-    font-size: 50px;
+.wrapper h1 {
+    font-size: 30px;
     text-align: center;
+    margin-bottom: 20px;
 }
 
-.wrapper .input-box{
-    width: 100%;
-    height: 50px;
-    margin: 30px 0;
-  
+.wrapper .input-box {
+    position: relative;
+    margin-bottom: 20px;
 }
-.input-box input{
+
+.input-box input {
     width: 100%;
-    height: 100%;
-    background: transparent;
+    padding: 15px;
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.1);
     border: none;
     outline: none;
     border: 2px solid rgba(255, 255, 255, 0.219);
     border-radius: 40px;
-    font-size: 23px;
     color: #000000;
-    padding: 20px 45px 20px 20px;
-    font-weight: 600;
-    
+    padding-right: 45px;
 }
-.input-box input::placeholder{
+
+.input-box input::placeholder {
     color: #ffffff;
 }
+
 .input-box i {
     position: absolute;
-    font-size: 25px;
-    right: 40px;
-    margin-top: 12px;
+    font-size: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+    color: #ffffff;
 }
-.wrapper .remember-forgot{
+
+.wrapper .remember-forgot {
     display: flex;
     justify-content: space-between;
-    font-size: 20px;
-    margin: -15px 0 15px;
+    font-size: 16px;
+    margin: 10px 0;
     font-weight: 600;
     color: #ffffff;
 }
-.remember-forgot label input{
+
+.remember-forgot label input {
     accent-color: #ffffff;
-    margin-right: 3px;
-    margin-left: 5px;
+    margin-right: 5px;
 }
-.remember-forgot a{
+
+.remember-forgot a {
     color: #ffffff;
     text-decoration: none;
     margin-right: 6px;
     font-weight: 600;
 }
-.remember-forgot a:hover{
+
+.remember-forgot a:hover {
     text-decoration: underline;
-    color: #000000;
+    color: #ffffff;
 }
-.wrapper .btn{
+
+.wrapper .btn {
     width: 100%;
     background-color: #000000;
     height: 45px;
@@ -99,27 +115,98 @@ body{
     border-radius: 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     cursor: pointer;
-    font-size: 24px;
+    font-size: 20px;
     color: #ffffff;
     font-weight: 600;
 }
-.wrapper .btn:hover{
+
+.wrapper .btn:hover {
     background-color: #ffffff;
     color: #000000;
 }
-.wrapper .register-link{
-    font-size: 20px;
+
+.wrapper .register-link {
+    font-size: 16px;
     text-align: center;
     margin-top: 20px;
     font-weight: 600;
     color: #ffffff;
 }
+
 .register-link p a {
     color: #ffffff;
     text-decoration: none;
     font-weight: 600;
 }
-.register-link p a:hover{
+
+.register-link p a:hover {
     text-decoration: underline;
-    color: #070707;
+    color: #ffffff;
+}
+
+/* Media Queries para responsive */
+@media (max-width: 768px) {
+    .logo {
+        margin-top: -80px; /* Ajustar posición vertical del logo en pantallas medianas */
+    }
+
+    .wrapper {
+        width: 90%;
+        max-width: 400px; /* Reducir el ancho máximo del formulario para pantallas medianas */
+        margin-top: 30px;
+        order: 1; /* Cambiar orden en pantallas medianas */
+    }
+
+    .wrapper h1 {
+        font-size: 26px;
+    }
+
+    .input-box i {
+        font-size: 18px;
+    }
+
+    .remember-forgot {
+        font-size: 14px;
+    }
+
+    .btn {
+        font-size: 18px;
+    }
+
+    .register-link {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        margin-top: -80px; /* Ajustar posición vertical del logo en pantallas pequeñas */
+    }
+
+    .wrapper {
+        width: 90%;
+        max-width: 300px; /* Reducir el ancho máximo del formulario para pantallas pequeñas */
+        margin-top: 20px;
+        order: 1; /* Cambiar orden en pantallas pequeñas */
+    }
+
+    .wrapper h1 {
+        font-size: 22px;
+    }
+
+    .input-box i {
+        display: none; /* Ocultar íconos en pantallas muy pequeñas */
+    }
+
+    .remember-forgot {
+        font-size: 12px;
+    }
+
+    .btn {
+        font-size: 16px;
+    }
+
+    .register-link {
+        font-size: 12px;
+    }
 }
