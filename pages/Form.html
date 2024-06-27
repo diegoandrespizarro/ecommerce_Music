@@ -8,7 +8,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="shortcut icon" href="/assets/guitarra-electrica.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/pages/formstyle.css">
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -100,24 +100,32 @@
                 </div>
         </nav>
     </header>
-
+<!-- FORMULARIO DE CONTACTO -->
     <section class="container-form-contact">
         <form action="" class="form">
             <div class="form-title">
                 <h1 class="form-contact">C<span>ontacto</span></h1>
             </div>
 
-            <label for="task-name" class="form-label">Nombre Completo</label>
-            <input type="text" id="task-name" class="form-input" placeholder="Escriba su nombre completo">
+            <label for="task-name" class="form-label">Nombre</label>
+            <input type="text" id="task-name" class="form-input">
 
-            <label for="task-email" class="form-label">Email</label>
-            <input type="text" id="task-email" class="form-input" placeholder="Escriba su email">
-
+            <label for="task-email" class="form-label">Correo Electrónico</label>
+            <input type="text" id="task-email" class="form-input">
+<!--
             <label for="task-affair" class="form-label">Asunto</label>
             <input type="text" id="task-affair" class="form-input" placeholder="Escriba el asunto">
+-->
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Asunto</option>
+                <option value="1">Mi Pedido</option>
+                <option value="2">Promociones</option>
+                <option value="3">Cambios</option>
+                <option value="3">Otros</option>
+              </select>
 
-            <label for="task-comment" class="form-label">Comentario</label>
-            <textarea id="task-comment" class="form-textarea" placeholder="Aqui escriba su cometario"></textarea>
+            <label for="task-comment" class="form-label">¿En qué podemos ayudar?</label>
+            <textarea id="task-comment" class="form-textarea"></textarea>
 
             <input type="submit" class="btn-submit" value="Enviar consulta">
 
