@@ -57,7 +57,7 @@ body{
     outline: none;
     background: #000000;
     font-size: 16px;
-    border: none;
+    border: 2px solid gray;
     color: #fdfdfd;
     padding: 15px o;
     cursor: pointer;  
