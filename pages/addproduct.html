@@ -50,7 +50,7 @@
                     <button class="navbar-toggler contenedorPrincipalCarrito" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
                         aria-label="Toggle navigation">
-                        <span class="bi bi-cart carritoContenedor" id="carritoCantidad"></span>
+                        <span class="bi bi-cart carritoContenedor" id="carritoCantidad">0</span>
                     </button>
                 </div>
                 <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasNavbar"
@@ -83,7 +83,7 @@
                         <a href="/pages/cart.html" class="btn btn-primary btn-block mini-cart-btn">Iniciar
                             compra</a>
                         <a href="" class="btn btn-danger btn-block mini-cart-btn" id="vaciarCarrito">Vaciar carrito</a>
-                        <a href="./index.html" class="btn btn-success btn-block mini-cart-btn">Seguir comprando</a>
+                        <a href="/index.html" class="btn btn-success btn-block mini-cart-btn">Seguir comprando</a>
                     </div>
                 </div>
         </nav>
@@ -117,11 +117,15 @@
                         </div>
                         <div class="mb-3">
                             <label for="productPrice" class="form-label">Precio:</label>
-                            <input type="text" class="form-control" id="productPrice" placeholder="">
+                            <input type="number" class="form-control" id="productPrice" placeholder="">
                         </div>
                         <div class="mb-3">
                             <label for="productImage" class="form-label">Imagen:</label>
                             <input type="text" class="form-control" id="productImage" placeholder="URL de la imagen">
+                        </div>
+                        <div class="mb-3">
+                            <label for="productStock" class="form-label">Cantidad en Stock:</label>
+                            <input type="number" id="productStock" name="productStock" required>
                         </div>
                         <div class="mb-3">
                             <label for="productDescription" class="form-label">Descripción:</label>
@@ -172,6 +176,10 @@
                             <input type="text" class="form-control" id="productImageMODIF" placeholder="URL de la imagen">
                         </div>
                         <div class="mb-3">
+                            <label for="productStock" class="form-label">Cantidad en Stock:</label>
+                            <input type="number" id="productStockMODIF" name="productStock" required>
+                        </div>
+                        <div class="mb-3">
                             <label for="productDescription" class="form-label">Descripción:</label>
                             <textarea class="form-control" id="productDescriptionMODIF" rows="3"></textarea>
                         </div>
@@ -194,6 +202,7 @@
             <thead>
                 <tr class="text-center" >
                     <th scope="col">ID</th>
+                    <th scope="col">Stock</th>
                     <th scope="col">Título</th>
                     <th scope="col">Categoría</th>
                     <th scope="col">Precio</th>
@@ -214,12 +223,12 @@
         <div id="social-container" class="red-social borde"></div>
         <p>&copy; <span id="current-year"></span> The House Music. Todos los derechos reservados.</p>
        </footer>
-        <!-- FIN DE FOOTER -->
-    <script src="/script.js"></script>
-    <script src="../js/addproducts.js"></script>
-    <script src="/js/cart.js"></script>
+        <!-- FIN DE FOOTER -->    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/addproducts.js"></script>
+    <script src="/js/cart.js"></script>
+    <script src="/script.js"></script>
     <script src="/js/footer.js"></script>
 </body>
 
