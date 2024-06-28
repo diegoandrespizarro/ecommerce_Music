@@ -242,11 +242,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-<<<<<<< HEAD
-    box-shadow: 6px 6px 5px #535755cb;
-=======
     /*box-shadow: 6px 6px 5px #fefffecb;*/
->>>>>>> 6d3ab7daf4868d33bb562296bf33678ae64eaf66
 }
 
 .carousel .list .item{
@@ -317,11 +313,7 @@
 .content .title{
     font-size: 60px;
     text-transform: uppercase;
-<<<<<<< HEAD
-    color: #fff;
-=======
     color: #ffffffcb;
->>>>>>> 6d3ab7daf4868d33bb562296bf33678ae64eaf66
     font-weight: bold;
     line-height: 1;
     text-shadow: 3px 4px 4px rgba(0, 0, 0, 0.8);
@@ -374,11 +366,7 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-<<<<<<< HEAD
-    background-color: #060707cb;
-=======
     background-color: #000703cb;
->>>>>>> 6d3ab7daf4868d33bb562296bf33678ae64eaf66
     color: #fff;
     border: none;
     outline: none;
@@ -516,11 +504,7 @@
     justify-content: center;
     background-color:rgb(0, 0, 0);
     padding: 0;
-<<<<<<< HEAD
-    color: #fff;
-=======
     color: #f7fffacb;
->>>>>>> 6d3ab7daf4868d33bb562296bf33678ae64eaf66
     border-style: double;
 }
 
