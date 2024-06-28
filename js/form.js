@@ -11,15 +11,9 @@ form.addEventListener('submit', async(event)=>{
     event.preventDefault();
     const name = taskName.value.trim();
     const email = taskEmail.value.trim();
-<<<<<<< HEAD
-    const affair = taskaffair.value;
-    const Comment = taskComment.value.trim();
-
-=======
     const affair = taskAffair.value.trim();
     const Comment = taskComment.value.trim();
    
->>>>>>> 6d3ab7daf4868d33bb562296bf33678ae64eaf66
     const newcontact = {
         name: name,
         email: email,
