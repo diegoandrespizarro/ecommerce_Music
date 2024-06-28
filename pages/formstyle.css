@@ -6,16 +6,16 @@ body{
 .container-form-contact .form .form-title .form-contact{
     font-weight: normal;
     font-family: 'Poppins', sans-serif;
-    color: rgb(112, 216, 112);
+    color: rgb(231, 238, 231);
     text-align: center;
     padding: 14px 0;
 }
 .container-form-contact .form .form-title .form-contact span{
-    color: rgb(0, 0, 0);
+    color: rgb(77, 77, 77);
 }
 
 .container-form-contact .form{
-    background: rgb(57, 68, 67);
+    background: rgb(5, 5, 5);
     width: 98%;
     max-width: 650px;
     margin: auto;
@@ -33,11 +33,11 @@ body{
     font-family: 'Poppins', sans-serif;
     position: relative;
 }
-.container-form-contact .form .form-input, .form-textarea, .form-select{
-    background: rgb(2, 2, 1);
+.container-form-contact .form .form-input, .form-textarea{
+    background: rgb(250, 250, 248);
     border: none;
     outline: none;
-    border-bottom: 2px solid rgb(112, 216, 112);
+    border-bottom: 2px solid rgb(79, 80, 79);
     width: 100%;
     padding: 12px;
     margin-bottom: 20px;
@@ -57,13 +57,13 @@ body{
     outline: none;
     background: #000000;
     font-size: 16px;
-    border: none;
+    border: 2px solid gray;
     color: #fdfdfd;
     padding: 15px o;
     cursor: pointer;  
     transition: all .5s ease;  
 }
 .container-form-contact .form .btn-submit:hover {
-    background: rgb(112, 216, 112);
-    color: #000;
+    background: rgb(252, 252, 252);
+    color: #000000;
 }
