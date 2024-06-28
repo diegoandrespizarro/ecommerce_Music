@@ -242,7 +242,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    box-shadow: 6px 6px 5px #1dec4acb;
+    /*box-shadow: 6px 6px 5px #fefffecb;*/
 }
 
 .carousel .list .item{
@@ -313,7 +313,7 @@
 .content .title{
     font-size: 60px;
     text-transform: uppercase;
-    color: #14ff72cb;
+    color: #ffffffcb;
     font-weight: bold;
     line-height: 1;
     text-shadow: 3px 4px 4px rgba(0, 0, 0, 0.8);
@@ -366,7 +366,7 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #14ff72cb;
+    background-color: #000703cb;
     color: #fff;
     border: none;
     outline: none;
@@ -498,13 +498,13 @@
 .title-categories{
     margin-top: 40px;
     font-size: 40px;
-    text-shadow: 2px 2px 5px rgb(98, 114, 106);
+    text-shadow: 2px 2px 5px rgb(134, 138, 136);
     text-align: center;
     display: flex;
     justify-content: center;
     background-color:rgb(0, 0, 0);
     padding: 0;
-    color: #14ff72cb;
+    color: #f7fffacb;
     border-style: double;
 }
 
@@ -1038,3 +1038,4 @@ footer p {
     }
 }
 /* fin de footer */
+
