@@ -1,27 +1,24 @@
 const form = document.getElementById('form');
 const taskName = document.getElementById('task-name');
 const taskEmail = document.getElementById('task-email');
-const formSelect = document.getElementById('form-select');
+const taskAffair = document.getElementById('task-affair');
 const taskComment = document.getElementById('task-comment');
-const flexCheckDefault = document.getElementById('flexCheckDefault');
 const urlContactos = 'https://667dcfda297972455f66640c.mockapi.io/api/FormulariodeContacto'
 
-console.log(taskName, taskEmail, formSelect, taskComment, flexCheckDefault)
+//console.log(taskName, taskEmail, formSelect, taskComment, flexCheckDefault)
 
 form.addEventListener('submit', async(event)=>{
     event.preventDefault();
     const name = taskName.value.trim();
     const email = taskEmail.value.trim();
-    const Select = formSelect.value;
+    const affair = taskAffair.value.trim();
     const Comment = taskComment.value.trim();
-    const CheckDefault = flexCheckDefault.checked;
-
+   
     const newcontact = {
         name: name,
         email: email,
-        Select: Select,
+        affair: affair,
         Comment: Comment,
-        CheckDefault: CheckDefault,
     };
 
     try{
