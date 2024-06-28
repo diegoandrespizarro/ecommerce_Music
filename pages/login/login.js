@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     loginForm.addEventListener('submit', async (event) => {
         event.preventDefault();
-        await login(); // Esperar a que la función login termine
+        await login(); 
     });
 });
 
@@ -22,24 +22,33 @@ async function login() {
     const email = emailInput.value;
     const password = passwordInput.value;
 
+    // Obtener y verificar si hay usuarios almacenados
     const users = JSON.parse(localStorage.getItem('users'));
+    if (!users) {
+        showError('No hay usuarios registrados');
+        return;
+    }
+
+    // Buscar el usuario por correo electrónico
     const user = users.find(user => user.email === email);
-
-    if (user) {
-        if (user.password === password) {
-            // Login exitoso, redirigir al index
-            if (user.role === 'admin') {
-                localStorage.setItem('role', 'admin');
-            } else {
-                localStorage.setItem('role', 'user');
-            }
-
-            window.location.href = '/index.html';
-        } else {
-            showError('Correo o Contraseña incorrecto');
-        }
-    } else {
+    if (!user) {
         showError('Correo o Contraseña incorrecto');
+        return;
+    }
+
+    // Verificar la contraseña
+    if (user.password !== password) {
+        showError('Correo o Contraseña incorrecto');
+        return;
+    }
+
+    // Login exitoso, establecer el rol y redirigir según el rol
+    if (user.role === 'admin') {
+        localStorage.setItem('role', 'admin');
+        window.location.href = '/pages/addproduct.html';
+    } else {
+        localStorage.setItem('role', 'user');
+        window.location.href = '/index.html';
     }
 }
 
