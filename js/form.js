@@ -13,14 +13,16 @@ form.addEventListener('submit', async(event)=>{
     const email = taskEmail.value.trim();
     const affair = taskAffair.value.trim();
     const Comment = taskComment.value.trim();
-   
+
+
     const newcontact = {
         name: name,
         email: email,
         affair: affair,
         Comment: Comment,
-    };
+    }
 
+    
     try{
         const response = await fetch(urlContactos,{
             method: 'POST',
@@ -39,6 +41,8 @@ form.addEventListener('submit', async(event)=>{
     } catch(error){
         alert('Error al enviar su consulta', error)
     }
+    
+
 
 
 })
