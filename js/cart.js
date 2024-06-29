@@ -9,37 +9,42 @@ document.addEventListener('click', async (event) => {
         const product = event.target.closest('.card-body');
         const title = product.querySelector('.card-title').textContent;
         const descripcion = product.querySelector('.card-text').textContent;
-        const stock = parseInt(product.querySelector('.card-stock').textContent);
-        let precio = product.querySelector('.card-precio').textContent.replace('$', '').trim();
-        const precioNumber = parseInt(precio);
+
+        // Extraer y convertir stock y precio a números
+        const stockText = product.querySelector('.card-stock').textContent.replace('Stock: ', '').trim();
+        const stock = parseInt(stockText);
+        
+        let precioText = product.querySelector('.card-precio').textContent.replace('Precio: $', '').trim();
+        const precioNumber = parseFloat(precioText);
+
         const imageUrl = productCard.querySelector('.carrito-producto-imagen') ? productCard.querySelector('.carrito-producto-imagen').getAttribute('src') : '';
 
-        console.log("este es el precio",typeof precioNumber, precioNumber)
-        
+        console.log("este es el precio", precioNumber);
+        console.log("este es el stock", stock);
+
         Swal.fire({
             position: "top-end",
             icon: "success",
             title: "Su producto fue agregado al carrito",
             showConfirmButton: false,
             timer: 1500
-          });
-         
+        });
+
         // Verificar si el producto ya está en el carrito
         let productoEnCarrito = false;
         const productosEnCarrito = carritoProductos.querySelectorAll('.carrito-producto');
         productosEnCarrito.forEach((producto) => {
             const tituloProductoCarrito = producto.querySelector('.carrito-producto-titulo small').textContent;
-            if (tituloProductoCarrito === title ) {
-                
+            if (tituloProductoCarrito === title) {
                 let cantidad = producto.querySelector('.suma-resta-productos p');
                 cantidad.textContent = parseInt(cantidad.textContent) + 1;
                 productoEnCarrito = true;
             }
         });
-        
+
         // Si no está en el carrito, agregarlo
         if (!productoEnCarrito) {
-            const productCard = `
+            const productCardHTML = `
                 <div class="carrito-producto">
                     <img class="card-img-top" src="${imageUrl}" alt="${title}">
                     <div class="carrito-producto-titulo">
@@ -52,18 +57,34 @@ document.addEventListener('click', async (event) => {
                             <i class="bi bi-dash-circle"></i><p>1</p><i class="bi bi-plus-circle"></i><i class="bi bi-trash3-fill"></i>
                         </div>
                     </div>
-                    <div class="card-precio" style="display:;">${precioNumber}</div>
+                    <div class="card-precio" style="display:;">$${precioNumber.toFixed(2)}</div>
                 </div>
             `;
 
-            carritoProductos.innerHTML += productCard;
+            carritoProductos.innerHTML += productCardHTML;
         }
-        
+
         guardarCarritoLocalStorage();
         actualizarCantidadCarrito();
     }
 });
 
+//SUMA TOTAL DE LOS PRODUCTOS EN EL CARRITO Y MOSTRARLO EN EL CARRITO 
+
+    const totalResumen = document.getElementById('totalCompraResumen');
+    const total = document.getElementById('totalCompra');
+    document.addEventListener('click', () => {
+    
+    const productos = JSON.parse(localStorage.getItem('productosEnCarrito')) || [];
+    let sumaTotal = 0;
+    productos.forEach((producto) => {
+        sumaTotal += producto.precioNumber * producto.cantidad;
+    });
+    total.textContent = sumaTotal.toFixed(2);
+    totalResumen.textContent = sumaTotal.toFixed(2);
+    guardarCarritoLocalStorage();
+    actualizarCantidadCarrito();
+});
 
 
 //BOTON DE VACIAR CARRITO
@@ -180,7 +201,7 @@ const cargarCarritoLocalStorage = () => {
                         <i class="bi bi-dash-circle"></i><p>${producto.cantidad}</p><i class="bi bi-plus-circle"></i><i class="bi bi-trash3-fill"></i>
                         </div>
                     </div>
-                    <div class="card-precio" style="display:;">${producto.precioNumber}</div>
+                    <div class="card-precio" style="display:;">$${producto.precioNumber}</div>
                 </div>
             `;
             carritoProductos.innerHTML += productCard;
@@ -235,10 +256,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-//mostrar la cantidad de productos aderidos al carrito(Falta terminar)
+//ACTUALIZAR LA CANTIDAD DE PRODUCTOS EN EL CARRITO
 const carritoCantidad = document.getElementById('carritoCantidad');
 
-// Función para actualizar la cantidad de productos en el carrito
 const actualizarCantidadCarrito = () => {
     const productosEnCarrito = JSON.parse(localStorage.getItem('productosEnCarrito')) || [];
     let cantidad = 0;
@@ -266,6 +286,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     actualizarCantidadCarrito();
 });
+
+
+
+
 
 
 
