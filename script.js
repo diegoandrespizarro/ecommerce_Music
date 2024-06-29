@@ -69,6 +69,7 @@ resetTimeAnimation()
 document.addEventListener('DOMContentLoaded', async () => {
     const productList = document.getElementById('product-list');
     const urlProducts = `https://6668e555f53957909ff96e69.mockapi.io/api/Products`;
+    
     try {
         // Hacer una petición para obtener todos los productos
         const response = await fetch(urlProducts);
@@ -76,8 +77,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         // Recorrer cada producto y renderizarlo en el DOM
         products.forEach(product => {
+            // Convertir precio y stock a números
+            const precioNumber = parseFloat(product.precio);
+            const stockNumber = parseInt(product.stock);
+
+            if (isNaN(precioNumber) || isNaN(stockNumber)) {
+                console.error("Error: Precio o Stock no son números válidos", product);
+                return;
+            }
             const truncatedDescription = product.descripcion.length > 20 ? `${product.descripcion.substring(0, 20)}...` : product.descripcion;
             const truncateTitle = product.title.length > 20 ? `${product.title.substring(0, 15)}...` : product.title;
+
             const productCard = `
                 <div class="col-md-4 contendor-Productos">
                     <div class="card mb-4 shadow-sm">
@@ -85,27 +95,22 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <div class="card-body">
                             <h5 class="card-title">${truncateTitle}</h5>
                             <p class="card-text">${truncatedDescription}</p>
-                            <p class="card-precio"><strong class="strongPrecio">Precio:</strong> $${parseInt(product.precio)}</p>
-                            <p class="card-stock">Stock: ${product.stock}</p>
+                            <p class="card-precio"><strong class="strongPrecio">Precio:</strong> $${precioNumber.toFixed(2)}</p>
+                            <p class="card-stock">Stock: ${stockNumber}</p>
                             <button class="btn btn-primary agregarAlCarrito">Agregar al carrito</button>
                         </div>
                     </div>
                 </div>
             `;
-            
+
             productList.innerHTML += productCard;
-           
         });
         
     } catch (error) {
         console.error("Error al obtener los productos", error);
     }
 });
-//EL TITULO DE LA TARJETA DEL PRODUCTO SOLO PUEDE TENER 20 CARACTERES
-
-
 
 // FINAL DE RENDERIZADO DE PRODUCTOS DE LA API
 
-//categorias
 

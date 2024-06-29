@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const productImage = document.getElementById("productImage");
     const productStock = document.getElementById("productStock");
     
+    
 
     if (submitForm) { // Verifica si el elemento existe
         submitForm.addEventListener('submit', async (event) => {
@@ -61,9 +62,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert("Error al enviar el producto: " + error.message);
             }
         });
-    } else {
-        console.error("El formulario con el ID 'submitForm' no se encontró en el DOM.");
     }
+     
 });
 
 //MOSTRAR PRODUCTOS EN LA TABLA
@@ -229,8 +229,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert("Error al enviar el producto: " + error.message);
             }
         });
-    } else {
-        console.error("El formulario con el ID 'updateForm' no se encontró en el DOM.");
     }
 });
 
