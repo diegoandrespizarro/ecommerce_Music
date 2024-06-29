@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <div class="card-body">
                             <h5 class="card-title">${truncateTitle}</h5>
                             <p class="card-text">${truncatedDescription}</p>
-                            <p class="card-precio"><strong>Precio:</strong> $${parseInt(product.precio)}</p>
+                            <p class="card-precio"><strong class="strongPrecio">Precio:</strong> $${parseInt(product.precio)}</p>
                             <p class="card-stock">Stock: ${product.stock}</p>
                             <button class="btn btn-primary agregarAlCarrito">Agregar al carrito</button>
                         </div>

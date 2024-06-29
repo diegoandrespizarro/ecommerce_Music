@@ -1,66 +1,80 @@
 //FUNCION PARA CREAR PRODUCTOS
-const submitForm = document.getElementById("submitForm");
-const productTitle = document.getElementById("productTitle");
-const productCat = document.getElementById("productCat");
-const productPrice = document.getElementById("productPrice");
-const productDescription = document.getElementById("productDescription");
-const productImage = document.getElementById("productImage");
-const productStock = document.getElementById("productStock");
 const urlProducts = `https://6668e555f53957909ff96e69.mockapi.io/api/Products`;
 
-submitForm.addEventListener(`submit`, async (event) => {
-    event.preventDefault(); // Evitamos la recarga de la página
-
-    const title = productTitle.value.trim();
-    const categoria = productCat.value.trim();
-    const descripcion = productDescription.value.trim();
-    const precio = parseInt(productPrice.value.trim());
-    const imageUrl = productImage.value.trim();
-    const stock = parseInt(productStock.value.trim());
+document.addEventListener('DOMContentLoaded', function () {
+    const submitForm = document.getElementById("submitForm");
+    const productTitle = document.getElementById("productTitle");
+    const productCat = document.getElementById("productCat");
+    const productPrice = document.getElementById("productPrice");
+    const productDescription = document.getElementById("productDescription");
+    const productImage = document.getElementById("productImage");
+    const productStock = document.getElementById("productStock");
     
-    const newProduct = {
-        title: title,
-        categoria: categoria,
-        descripcion: descripcion,
-        precio: precio,
-        imageUrl: imageUrl,
-        stock: stock
-    };
 
-    try {
-        const response = await fetch(urlProducts, {
-            method: `POST`,
-            body: JSON.stringify(newProduct),
-            headers: {
-                "Content-Type": `application/json`
+    if (submitForm) { // Verifica si el elemento existe
+        submitForm.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Evitamos la recarga de la página
+
+            const title = productTitle.value.trim();
+            const categoria = productCat.value.trim();
+            const descripcion = productDescription.value.trim();
+            const precio = parseInt(productPrice.value.trim());
+            const imageUrl = productImage.value.trim();
+            const stock = parseInt(productStock.value.trim());
+            
+            const newProduct = {
+                title: title,
+                categoria: categoria,
+                descripcion: descripcion,
+                precio: precio,
+                imageUrl: imageUrl,
+                stock: stock
+            };
+
+            try {
+                const response = await fetch(urlProducts, {
+                    method: 'POST',
+                    body: JSON.stringify(newProduct),
+                    headers: {
+                        "Content-Type": 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                   await Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Su producto fue creado exitosamente",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    // Obtener el producto creado
+                    const createdProduct = await response.json();
+                    // Guardar el producto en el almacenamiento local
+                    localStorage.setItem('newProduct', JSON.stringify(createdProduct));
+                    // Redirigir a index.html
+                    window.location.href = '/pages/addproduct.html';
+                } else {
+                    alert("Error al crear el producto: " + response.statusText);
+                }
+            } catch (error) {
+                alert("Error al enviar el producto: " + error.message);
             }
         });
-
-        if (response.ok) {
-           await Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Su producto fue creado exitosamente",
-                showConfirmButton: false,
-                timer: 1500
-              });
-            // Obtener el producto creado
-            const createdProduct = await response.json();
-            // Guardar el producto en el almacenamiento local
-            localStorage.setItem('newProduct', JSON.stringify(createdProduct));
-            // Redirigir a index.html
-            window.location.href = '/pages/addproduct.html';
-        } else {
-            alert("Error al crear el producto", response.statusText);
-        }
-    } catch (error) {
-        alert("Error al enviar el producto", error);
+    } else {
+        console.error("El formulario con el ID 'submitForm' no se encontró en el DOM.");
     }
 });
 
 //MOSTRAR PRODUCTOS EN LA TABLA
-const productList = document.getElementById('product-list');
+
 document.addEventListener('DOMContentLoaded', async () => {
+
+    const productList = document.getElementById('product-list-CRUD');
+    if (!productList) return; // Si el elemento no existe, no hace nada
+
+    const urlProducts = `https://6668e555f53957909ff96e69.mockapi.io/api/Products`;
+
     try {
         // Hacer una petición para obtener todos los productos
         const response = await fetch(urlProducts);
@@ -160,51 +174,63 @@ document.addEventListener('click', async (event) => {
 });
 
 //FUNCION PARA ACTUALIZAR PRODUCTOS
-const updateForm = document.getElementById('updateForm');
+document.addEventListener('DOMContentLoaded', function () {
+    const updateForm = document.getElementById('updateForm');
+    const productTitleMODIF = document.getElementById('productTitleMODIF');
+    const productCatMODIF = document.getElementById('productCatMODIF');
+    const productPriceMODIF = document.getElementById('productPriceMODIF');
+    const productDescriptionMODIF = document.getElementById('productDescriptionMODIF');
+    const productImageMODIF = document.getElementById('productImageMODIF');
+    const productStockMODIF = document.getElementById('productStockMODIF');
+    const urlProducts = `https://6668e555f53957909ff96e69.mockapi.io/api/Products`;
 
-updateForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const title = productTitleMODIF.value.trim();
-    const categoria = productCatMODIF.value.trim();
-    const descripcion = productDescriptionMODIF.value.trim();
-    const precio = parseInt(productPriceMODIF.value.trim());
-    const imageUrl = productImageMODIF.value.trim();
-    const stock = parseInt(productStockMODIF.value.trim());
-    const productId = event.target.getAttribute('data-id');
-    
-    const updatedProduct = {
-        title: title,
-        categoria: categoria,
-        descripcion: descripcion,
-        precio: precio,
-        stock: stock,
-        imageUrl: imageUrl
-    };
-    try {
-        const response = await fetch(`${urlProducts}/${productId}`, {
-            method: 'PUT',
-            body: JSON.stringify(updatedProduct),
-            headers: {
-                'Content-Type': 'application/json'
+    if (updateForm) { // Verifica si el elemento existe
+        updateForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const title = productTitleMODIF.value.trim();
+            const categoria = productCatMODIF.value.trim();
+            const descripcion = productDescriptionMODIF.value.trim();
+            const precio = parseInt(productPriceMODIF.value.trim());
+            const imageUrl = productImageMODIF.value.trim();
+            const stock = parseInt(productStockMODIF.value.trim());
+            const productId = updateForm.getAttribute('data-id');
+            
+            const updatedProduct = {
+                title: title,
+                categoria: categoria,
+                descripcion: descripcion,
+                precio: precio,
+                stock: stock,
+                imageUrl: imageUrl
+            };
+            try {
+                const response = await fetch(`${urlProducts}/${productId}`, {
+                    method: 'PUT',
+                    body: JSON.stringify(updatedProduct),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                if (response.ok) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Su producto fue actualizado exitosamente",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                    setTimeout(() => {
+                        window.location.href = '/pages/addproduct.html';
+                    }, 1500);
+                } else {
+                    alert("Error al actualizar el producto: " + response.statusText);
+                }
+            } catch (error) {
+                alert("Error al enviar el producto: " + error.message);
             }
         });
-        if (response.ok) {
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Su producto fue actualizado exitosamente",
-                showConfirmButton: false,
-                timer: 1500
-              });
-            setTimeout(() => {
-                window.location.href = '/pages/addproduct.html';
-            }, 1500);
-        } else {
-            alert("Error al actualizar el producto", response.statusText);
-        }
-    } catch (error) {
-        alert("Error al enviar el producto", error);
+    } else {
+        console.error("El formulario con el ID 'updateForm' no se encontró en el DOM.");
     }
 });
-
 
