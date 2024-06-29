@@ -632,6 +632,14 @@
     transition: background-color 0.2s; /* Añadir una transición suave */
 }
 .card-precio{
+    font-size: 15px;
+    font-weight: 500;
+    color: red;
+}
+.strongPrecio{
+    color: #000;
+}
+.card-stock{
     font-size: 12px;
 }
 .agregarAlCarrito:hover {

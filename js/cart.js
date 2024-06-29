@@ -111,29 +111,37 @@ document.addEventListener('click', (event) => {
    
 });
 
-
-//ALERTA PARA FINALIZAR LA COMPRA
-
+//FUNCION PARA VACIAR EL CARRITO Y ACTUALIZAR LA CANTIDAD
 document.addEventListener('DOMContentLoaded', function () {
     const FinalizarCompra = document.getElementById("FinalizarCompra");
-    FinalizarCompra.addEventListener('click', async function (event) {
-        event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
-        
-        // Mostrar la alerta
-         await Swal.fire({
-             position: "top-center",
-             icon: "success",
-             title: "Su compra fue realizada",
-             showConfirmButton: true,
-             timer: 1500
-         });
-         carritoProductos.innerHTML = '';
-        guardarCarritoLocalStorage();
-        actualizarCantidadCarrito();
-        // Aquí puedes redirigir a otra página después de la alerta si es necesario
-        window.location.href = '/index.html';
-    });
-    
+    const carritoProductosCart = document.getElementById('carritoProductosCart');
+
+    if (FinalizarCompra) { // Verifica si el elemento existe
+        FinalizarCompra.addEventListener('click', async function (event) {
+            event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+            
+            // Mostrar la alerta
+            await Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: "Su compra fue realizada",
+                showConfirmButton: true,
+                timer: 1500
+            });
+
+            // Vaciar el carrito en el DOM
+            carritoProductosCart.innerHTML = '';
+            
+            // Vaciar el carrito en el almacenamiento local
+            localStorage.removeItem('productosEnCarrito');
+            
+            // Actualizar la cantidad del carrito
+            actualizarCantidadCarrito();
+
+            // Aquí puedes redirigir a otra página después de la alerta si es necesario
+            window.location.href = '/index.html';
+        });
+    } 
 });
 
 //PERSISTENCIA DE DATOS EN EL CARRITO DE COMPRAS LOCALSTORAGE
@@ -190,37 +198,41 @@ document.addEventListener('click', (event) => {
 });
 
 //RENDERIZAR EN CART.HTML LOS PRODUCTOS DEL CARRITO
-const carritoProductosCart = document.getElementById('carritoProductosCart');
+document.addEventListener('DOMContentLoaded', () => {
+    const carritoProductosCart = document.getElementById('carritoProductosCart');
 
-
-const cargarCarritoLocalStorageCart = () => {
-    const productos = JSON.parse(localStorage.getItem('productosEnCarrito'));
-    if (productos) {
-        productos.forEach((producto) => {
-            const productCard = `
-            <tr>
-                <div class="contenedor-producto-resumen">
-                    <div class="carrito-producto-resumen">
-                        <img class="card-img-top-resumen" src="${producto.imageUrl}" alt="${producto.titulo}">
-                        <div class="carrito-producto-titulo-resumen">
-                            <h1>${producto.titulo}</h1>
-                            <h3>${producto.descripcion}</h3>
-                        </div>
-                        <div class="carrito-producto-cantidad-resumen">
-                            <div class="suma-resta-productos">
-                            <i class="bi bi-dash-circle"></i><p>${producto.cantidad}</p><i class="bi bi-plus-circle"></i><i class="bi bi-trash3-fill"></i>
+    const cargarCarritoLocalStorageCart = () => {
+        const productos = JSON.parse(localStorage.getItem('productosEnCarrito'));
+        if (productos && carritoProductosCart) {
+            productos.forEach((producto) => {
+                const productCard = `
+                <tr>
+                    <td>
+                        <div class="contenedor-producto-resumen">
+                            <div class="carrito-producto-resumen">
+                                <img class="card-img-top-resumen" src="${producto.imageUrl}" alt="${producto.titulo}">
+                                <div class="carrito-producto-titulo-resumen">
+                                    <h1>${producto.titulo}</h1>
+                                    <h3>${producto.descripcion}</h3>
+                                </div>
+                                <div class="carrito-producto-cantidad-resumen">
+                                    <div class="suma-resta-productos">
+                                        <i class="bi bi-dash-circle"></i><p>${producto.cantidad}</p><i class="bi bi-plus-circle"></i><i class="bi bi-trash3-fill"></i>
+                                    </div>
+                                </div>
+                                <div class="card-precio-resumen" style="display: ;">${producto.precioNumber}</div>
                             </div>
                         </div>
-                        <div class="card-precio-resumen" style="display: ;">${producto.precioNumber}</div>
-                    </div>
-                </div>
-            </tr>
-            `;
-            carritoProductosCart.innerHTML += productCard;
-        });
+                    </td>
+                </tr>
+                `;
+                carritoProductosCart.innerHTML += productCard;
+            });
+        }
     }
-}
-cargarCarritoLocalStorageCart();
+    
+    cargarCarritoLocalStorageCart();
+});
 
 
 //mostrar la cantidad de productos aderidos al carrito(Falta terminar)
