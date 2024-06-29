@@ -5,7 +5,6 @@ const taskAffair = document.getElementById('task-affair');
 const taskComment = document.getElementById('task-comment');
 const urlContactos = 'https://667dcfda297972455f66640c.mockapi.io/api/FormulariodeContacto'
 
-//console.log(taskName, taskEmail, formSelect, taskComment, flexCheckDefault)
 
 form.addEventListener('submit', async(event)=>{
     event.preventDefault();
@@ -13,6 +12,14 @@ form.addEventListener('submit', async(event)=>{
     const email = taskEmail.value.trim();
     const affair = taskAffair.value.trim();
     const Comment = taskComment.value.trim();
+    if(!email.includes('@')){
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Email incorrecto!",
+          });
+        return;
+    }
 
 
     const newcontact = {
@@ -31,17 +38,24 @@ form.addEventListener('submit', async(event)=>{
         });
 
         if(response.ok){
-            alert('Su consulta fue enviada')
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Enviado con Éxito!",
+                showConfirmButton: false,
+                timer: 1500
+              });
             form.reset();
         }else{
             const errortext = await response.text();
-            alert('Error al enviar su consulta', errortext )
+            alert('Error al enviar su consulta', errortext)
         }
 
     } catch(error){
         alert('Error al enviar su consulta', error)
-    }
-    
+    }    
+
+
 
 
 
