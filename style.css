@@ -734,11 +734,11 @@
         border-radius: 0 0 10px 10px; /* Bordes redondeados solo en la parte inferior */
         font-size: 8px;
     }
-    .card-precio{
-        font-size: 10px;
-    }
     .card-stock{
         font-size: 8px;
+    }
+    .card-precio{
+        font-size: 10px;
     }
 }
 /* CARD DE PRODUCTO EN EL CARRITO  */
@@ -834,6 +834,7 @@
     flex-direction: column;
     width: 25%;
 }
+
 @media screen and (max-width: 999px){
     .contenedor-producto-resumen{
         width: 100%;
