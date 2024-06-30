@@ -69,19 +69,35 @@ document.addEventListener('click', async (event) => {
     }
 });
 
-//SUMA TOTAL DE LOS PRODUCTOS EN EL CARRITO Y MOSTRARLO EN EL CARRITO 
+// Elementos del DOM para mostrar el total de la compra
+const totalResumen = document.getElementById('totalCompraResumen');
+const total = document.getElementById('totalCompra');
 
-    const totalResumen = document.getElementById('totalCompraResumen');
-    const total = document.getElementById('totalCompra');
-    document.addEventListener('click', () => {
-    
+// Función para calcular y actualizar el total de la compra
+function actualizarTotalCompra() {
     const productos = JSON.parse(localStorage.getItem('productosEnCarrito')) || [];
     let sumaTotal = 0;
     productos.forEach((producto) => {
         sumaTotal += producto.precioNumber * producto.cantidad;
     });
-    total.textContent = sumaTotal.toFixed(2);
-    totalResumen.textContent = sumaTotal.toFixed(2);
+    if (total) {
+        total.textContent =`$${sumaTotal.toFixed(2)}`;
+    }
+    if (totalResumen) {
+        totalResumen.textContent =`$${sumaTotal.toFixed(2)}`;
+    }
+}
+
+// Actualizar el total de la compra al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    actualizarTotalCompra();
+    guardarCarritoLocalStorage();
+    actualizarCantidadCarrito();
+});
+
+// Actualizar el total de la compra cuando se hacen cambios en el carrito
+document.addEventListener('click', () => {
+    actualizarTotalCompra();
     guardarCarritoLocalStorage();
     actualizarCantidadCarrito();
 });
