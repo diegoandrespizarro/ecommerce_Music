@@ -1,5 +1,3 @@
-
-
 // RENDERIZAR LOS PRODUCTOS DE LA API EN EL CARRITO Y SI ESTA ESE PRODUCTO LO SUMO O LO AGREGO
 const carritoProductos = document.getElementById('carritoProductos');
 
@@ -19,9 +17,6 @@ document.addEventListener('click', async (event) => {
 
         const imageUrl = productCard.querySelector('.carrito-producto-imagen') ? productCard.querySelector('.carrito-producto-imagen').getAttribute('src') : '';
 
-        console.log("este es el precio", precioNumber);
-        console.log("este es el stock", stock);
-
         Swal.fire({
             position: "top-end",
             icon: "success",
@@ -30,18 +25,34 @@ document.addEventListener('click', async (event) => {
             timer: 1500
         });
 
-        // Verificar si el producto ya está en el carrito
+        // Verificar si el producto ya está en el carrito y restar del stock
         let productoEnCarrito = false;
+        let excedeStock = false;
         const productosEnCarrito = carritoProductos.querySelectorAll('.carrito-producto');
         productosEnCarrito.forEach((producto) => {
             const tituloProductoCarrito = producto.querySelector('.carrito-producto-titulo small').textContent;
             if (tituloProductoCarrito === title) {
                 let cantidad = producto.querySelector('.suma-resta-productos p');
-                cantidad.textContent = parseInt(cantidad.textContent) + 1;
+                const nuevaCantidad = parseInt(cantidad.textContent) + 1;
+                if (nuevaCantidad > stock) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "error",
+                        title: "No hay suficiente stock",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    excedeStock = true;
+                    return;
+                }
+                cantidad.textContent = nuevaCantidad;
                 productoEnCarrito = true;
             }
         });
-
+        // Si la cantidad excede el stock, salir de la función
+        if (excedeStock) {
+            return;
+        }
         // Si no está en el carrito, agregarlo
         if (!productoEnCarrito) {
             const productCardHTML = `
@@ -60,20 +71,19 @@ document.addEventListener('click', async (event) => {
                     <div class="card-precio" style="display:;">$${precioNumber.toFixed(2)}</div>
                 </div>
             `;
-
             carritoProductos.innerHTML += productCardHTML;
         }
-
         guardarCarritoLocalStorage();
         actualizarCantidadCarrito();
     }
 });
 
-// Elementos del DOM para mostrar el total de la compra
+
+
+// Función para calcular y actualizar el total de la compra
 const totalResumen = document.getElementById('totalCompraResumen');
 const total = document.getElementById('totalCompra');
 
-// Función para calcular y actualizar el total de la compra
 function actualizarTotalCompra() {
     const productos = JSON.parse(localStorage.getItem('productosEnCarrito')) || [];
     let sumaTotal = 0;
@@ -102,8 +112,7 @@ document.addEventListener('click', () => {
     actualizarCantidadCarrito();
 });
 
-
-//BOTON DE VACIAR CARRITO
+//BOTON DE VACIAR CARRITO 
 const vaciarCarrito = document.getElementById('vaciarCarrito');
 vaciarCarrito.addEventListener('click', () => {
     carritoProductos.innerHTML = '';
@@ -113,25 +122,23 @@ vaciarCarrito.addEventListener('click', () => {
 
 //BOTON DE ELIMINAR PRODUCTO DEL CARRITO
 document.addEventListener('click', (event) => {
-    if (event.target.classList.contains('bi-trash3-fill')) {
+    if (event.target.classList.contains('bi-trash3-fill') ){
         event.target.parentElement.parentElement.parentElement.remove();
         guardarCarritoLocalStorage();
         actualizarCantidadCarrito();
+        actualizarTotalCompra();
     }
-    
-  
 });
 
-// BOTON DE SUMAR PRODUCTO AL CARRITO
+// BOTON DE SUMAR PRODUCTO AL CARRITO 
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('bi-plus-circle')) {
         const cantidad = event.target.previousElementSibling;
         cantidad.textContent = parseInt(cantidad.textContent) + 1;
         guardarCarritoLocalStorage();
         actualizarCantidadCarrito();
+        actualizarTotalCompra();
         }
-        
-     
     });
 
 //BOTON DE RESTAR PRODUCTO AL CARRITO
@@ -142,10 +149,9 @@ document.addEventListener('click', (event) => {
             cantidad.textContent = parseInt(cantidad.textContent) - 1;
             guardarCarritoLocalStorage();
             actualizarCantidadCarrito();
+            actualizarTotalCompra();
         }
     }
-    
-   
 });
 
 //FUNCION PARA VACIAR EL CARRITO Y ACTUALIZAR LA CANTIDAD
@@ -157,7 +163,6 @@ document.addEventListener('DOMContentLoaded', function () {
         FinalizarCompra.addEventListener('click', async function (event) {
             event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
             
-            // Mostrar la alerta
             await Swal.fire({
                 position: "top-center",
                 icon: "success",
@@ -165,7 +170,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 showConfirmButton: true,
                 timer: 1500
             });
-
             // Vaciar el carrito en el DOM
             carritoProductosCart.innerHTML = '';
             
@@ -197,7 +201,6 @@ const guardarCarritoLocalStorage = () => {
         
     });
     localStorage.setItem('productosEnCarrito', JSON.stringify(productos));
-    
 };
 
 const cargarCarritoLocalStorage = () => {
@@ -243,8 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (productos && carritoProductosCart) {
             productos.forEach((producto) => {
                 const productCard = `
-                <tr>
-                    <td>
                         <div class="contenedor-producto-resumen">
                             <div class="carrito-producto-resumen">
                                 <img class="card-img-top-resumen" src="${producto.imageUrl}" alt="${producto.titulo}">
@@ -260,17 +261,13 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="card-precio-resumen" style="display: ;">${producto.precioNumber}</div>
                             </div>
                         </div>
-                    </td>
-                </tr>
                 `;
                 carritoProductosCart.innerHTML += productCard;
             });
         }
     }
-    
     cargarCarritoLocalStorageCart();
 });
-
 
 //ACTUALIZAR LA CANTIDAD DE PRODUCTOS EN EL CARRITO
 const carritoCantidad = document.getElementById('carritoCantidad');

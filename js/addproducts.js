@@ -9,12 +9,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const productDescription = document.getElementById("productDescription");
     const productImage = document.getElementById("productImage");
     const productStock = document.getElementById("productStock");
-    
-    
 
-    if (submitForm) { // Verifica si el elemento existe
+    if (submitForm) { // Verificamos si el elemento existe
         submitForm.addEventListener('submit', async (event) => {
-            event.preventDefault(); // Evitamos la recarga de la página
+            event.preventDefault();
 
             const title = productTitle.value.trim();
             const categoria = productCat.value.trim();
@@ -22,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const precio = parseInt(productPrice.value.trim());
             const imageUrl = productImage.value.trim();
             const stock = parseInt(productStock.value.trim());
-            
+
             const newProduct = {
                 title: title,
                 categoria: categoria,
@@ -42,45 +40,51 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
 
                 if (response.ok) {
-                   await Swal.fire({
+                    await Swal.fire({
                         position: "center",
                         icon: "success",
                         title: "Su producto fue creado exitosamente",
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    // Obtener el producto creado
+                    // Obtengo el producto creado
                     const createdProduct = await response.json();
-                    // Guardar el producto en el almacenamiento local
+                    // Guardao el producto en el almacenamiento local
                     localStorage.setItem('newProduct', JSON.stringify(createdProduct));
-                    // Redirigir a index.html
+                    // vuelvo al index
                     window.location.href = '/pages/addproduct.html';
                 } else {
-                    alert("Error al crear el producto: " + response.statusText);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: response.statusText,
+                    });
                 }
             } catch (error) {
-                alert("Error al enviar el producto: " + error.message);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: error.message,
+                });
             }
         });
     }
-     
 });
 
-//MOSTRAR PRODUCTOS EN LA TABLA
+//MOSTRAR LOS PRODUCTOS EN LA TABLA
 
 document.addEventListener('DOMContentLoaded', async () => {
-
     const productList = document.getElementById('product-list-CRUD');
-    if (!productList) return; // Si el elemento no existe, no hace nada
+    if (!productList) return;
 
     const urlProducts = `https://6668e555f53957909ff96e69.mockapi.io/api/Products`;
 
     try {
-        // Hacer una petición para obtener todos los productos
+        // HAGO UNA PETICION PARA OBTENER TODOS LOS PRODUCTOS
         const response = await fetch(urlProducts);
         const products = await response.json();
 
-        // Recorrer cada producto y renderizarlo en el DOM
+        // RECORRO CADA PRODUCTO Y RENDERIZO EN EL DOM CREANDO UNA FILA DE TABLA
         products.forEach(product => {
             const productCard = `
                 <tr>
@@ -99,17 +103,19 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
             productList.innerHTML += productCard;
         });
-
     } catch (error) {
-        console.error("Error al obtener los productos", error);
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: error,
+        });
     }
 });
-// ELIMINAR PRODUCTOS DE LA TABLA
+// ELIMINO PRODUCTOS DE LA TABLA Y DE LA API TOMANDO EL ID DE REFERENCIA
 document.addEventListener('click', async (event) => {
     if (event.target.classList.contains('delete-product')) {
         const productId = event.target.getAttribute('data-id');
 
-        // Mostrar la alerta de confirmación antes de hacer la solicitud de eliminación
         const { isConfirmed } = await Swal.fire({
             title: "Estas seguro?",
             text: "No podrás revertir esto!",
@@ -134,15 +140,22 @@ document.addEventListener('click', async (event) => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    // Redirigir a index.html después de un breve retraso para que el usuario vea el mensaje de éxito
                     setTimeout(() => {
                         window.location.href = '/pages/addproduct.html';
                     }, 1500);
                 } else {
-                    alert("Error al eliminar el producto", response.statusText);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: response.statusText,
+                    });
                 }
             } catch (error) {
-                alert("Error al eliminar el producto", error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: error,
+                });
             }
         }
     }
@@ -161,7 +174,7 @@ document.addEventListener('click', async (event) => {
         const productId = event.target.getAttribute('data-id');
         const response = await fetch(`${urlProducts}/${productId}`);
         const product = await response.json();
-        
+
         productTitleMODIF.value = product.title;
         productCatMODIF.value = product.categoria;
         productDescriptionMODIF.value = product.descripcion;
@@ -169,7 +182,7 @@ document.addEventListener('click', async (event) => {
         productStockMODIF.value = product.stock;
         productImageMODIF.value = product.imageUrl;
         updateForm.setAttribute('data-id', productId);
-         
+
     }
 });
 
@@ -184,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const productStockMODIF = document.getElementById('productStockMODIF');
     const urlProducts = `https://6668e555f53957909ff96e69.mockapi.io/api/Products`;
 
-    if (updateForm) { // Verifica si el elemento existe
+    if (updateForm) { //VERIFICAMOS SI EL ELEMENTO EXISTE Y SI EXISTE ENTONCES GUARDAMOS LOS VALORES DE LOS INPUTS
         updateForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             const title = productTitleMODIF.value.trim();
@@ -194,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const imageUrl = productImageMODIF.value.trim();
             const stock = parseInt(productStockMODIF.value.trim());
             const productId = updateForm.getAttribute('data-id');
-            
+
             const updatedProduct = {
                 title: title,
                 categoria: categoria,
@@ -218,15 +231,23 @@ document.addEventListener('DOMContentLoaded', function () {
                         title: "Su producto fue actualizado exitosamente",
                         showConfirmButton: false,
                         timer: 1500
-                      });
+                    });
                     setTimeout(() => {
                         window.location.href = '/pages/addproduct.html';
                     }, 1500);
                 } else {
-                    alert("Error al actualizar el producto: " + response.statusText);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: (response.statusText),
+                    });
                 }
             } catch (error) {
-                alert("Error al enviar el producto: " + error.message);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: (error.message),
+                });
             }
         });
     }
