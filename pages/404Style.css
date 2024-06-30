@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+body {
+    background: url('/assets/fondo_404_2.webp') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* LOGO */
+header {
+    text-align: center;
+    width: 100%;
+    
+}
+
+.logo {
+    margin-top: -400px;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 190px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+/* FIN DE LOGO */
+
+/* TEXT404 */
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    width: 100%;
+}
+
+.text404 {
+    width: 90%;
+    max-width: 520px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    text-align: center;
+}
+.text404 p{
+    font-size: 25px;
+}
+/* FIN DE TEXT404 */
+
+/* FOOTER */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 0.5em 0; 
+    background-image: url(/assets/footer3-jpg.jpg);
+    background-position: center;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.8em; 
+}
+
+.logofooter {
+    width: 80px; 
+    height: 70px; 
+    margin: 10px 0; 
+}
+
+.logofooter:hover {
+    transition: 0.3s, transform 0.3s;
+    transform: scale(1.1);
+}
+
+#icon-container {
+    margin-top: 0.5em; 
+}
+
+#icon-container i {
+    margin: 0 5px; 
+    color: white;
+    font-size: 1.2em; 
+    transition: color 0.3s;
+}
+
+#icon-container i:hover {
+    color: #ddd;
+}
+
+.red-social {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 0.5em; 
+}
+
+.red-social-item {
+    margin: 0.5px; 
+    text-align: center;
+    flex: 1 1 calc(33.333% - 1em); 
+    box-sizing: border-box;
+}
+
+.red-social-item .nombre {
+    display: block;
+    margin-bottom: 10px; 
+    font-weight: bold;
+    font-size: 0.9em; 
+}
+
+.red-social-item a {
+    margin: 0 15px; 
+    color: white;
+    font-size: 30px; 
+    transition: 0.3s, transform 0.3s;
+    text-decoration: none;
+    margin-bottom: 15px; 
+}
+
+.red-social-item a:hover {
+    color: #218da0;
+    transform: scale(1.2);
+}
+/* FIN DE FOOTER */
