@@ -269,10 +269,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </div>
                                 <div class="carrito-producto-cantidad-resumen">
                                     <div class="suma-resta-productos">
-                                        <i class="bi bi-dash-circle"></i><p>${producto.cantidad}</p><i class="bi bi-plus-circle"></i><i class="bi bi-trash3-fill"></i>
+                                        <p>${producto.cantidad} unidades</p>
                                     </div>
                                 </div>
-                                <div class="card-precio-resumen" style="display: ;">$${producto.precioNumber}</div>
+                                <div class="card-precio-resumen" style="display: ;">c/u $${producto.precioNumber}</div>
                             </div>
                         </div>
                 `;
