@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
 /* inicia la navbar */
@@ -608,14 +610,14 @@
     
 }
 .carrito-producto-imagen {
-   width: 100%;
-   height: 190px;
-   object-fit: cover;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   align-content: center;
-   border-radius: 10px;
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .contendor-Productos {
@@ -642,7 +644,7 @@
 }
 .agregarAlCarrito {
     width: 70%;
-    font-size: 13px;
+    font-size: 12px;
     background-color: black; /* Color inicial del botón */
     color: white; /* Color del texto del botón */
     border: none; /* Eliminar borde predeterminado */
@@ -655,6 +657,13 @@
     font-weight: 500;
     color: red;
 }
+.card-title{
+    font-size: 15px;
+}
+.card-text{
+    font-size: 12px;
+}
+
 .strongPrecio{
     color: #000;
 }
@@ -678,8 +687,14 @@
         flex-direction: column;
         justify-content: space-around;
         h5{
-            font-size:15px;
+            font-size:13px;
         }
+    }
+    .truncado {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
     }
     .carrito-producto-imagen{
         width: 100%;
@@ -691,6 +706,9 @@
         height: 30px;
         font-size:10px;
         text-align: center;
+    }
+    .card-stock{
+        font-size: 10px;
     }
     .shadow-sm{
         width: 100%;
@@ -744,6 +762,7 @@
 /* CARD DE PRODUCTO EN EL CARRITO  */
 .card-img-top{
     width: 21%;
+    border-radius: 10px;
 }
 .carrito-producto{
     display: flex;
@@ -761,6 +780,7 @@
 /* FIN DE CARD DE PRODUCTOS DE CARRITO  */
 
 /* CSS CARRITO RESUMEN */
+
 .contenedor-producto-resumen{
     width: 100%;
     height: auto;
@@ -783,6 +803,7 @@
 }
 .card-img-top-resumen{
     width: 8%;
+    border-radius: 10px;
 }
 .carrito-producto-titulo-resumen{
     display: flex;
