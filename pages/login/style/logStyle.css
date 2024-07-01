@@ -9,7 +9,7 @@
 
 body {
     display: flex;
-    flex-direction: column; /* Alinear elementos en columna */
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -20,29 +20,29 @@ body {
 
 /* Logo */
 .logo {
-    text-align: center; /* Centrar el logo */
-    margin-top: -400px; /* Ajustar posición vertical */
-    margin-bottom: 20px; /* Espacio inferior */
+    text-align: center; 
+    margin-top: -400px; 
+    margin-bottom: 20px; 
 }
 
 .logo img {
-    width: 150px; /* Ajustar tamaño del logo */
+    width: 150px; 
     display: block;
-    margin: 0 auto; /* Centrar horizontalmente */
+    margin: 0 auto; 
 }
 
 /* Formulario */
 .wrapper {
-    width: 90%; /* Ancho ajustado para ser responsive */
-    max-width: 520px; /* Ancho máximo del formulario */
+    width: 90%; 
+    max-width: 520px; 
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+    background-color: rgba(255, 255, 255, 0.1); 
     color: #ffffff;
     border-radius: 10px;
     border: 2px solid rgba(255, 255, 255, 0.5);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(5px);
-    order: 2; /* Cambiar orden en pantallas pequeñas */
+    order: 2; 
 }
 
 .wrapper h1 {

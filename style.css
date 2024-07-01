@@ -1012,14 +1012,16 @@ footer {
     text-align: center;
     padding: 1em 0;
     background-image: url(./assets/footer3-jpg.jpg);
-    /* background-repeat: no-repeat;  */
-    /* /* background-size: cover;  */
     background-position: center; 
 }
 
 footer p {
     margin: 0;
     background-image: url();
+}
+footer h3{
+    margin-top: 30px;
+    text-decoration: underline;
 }
 .logofooter{
     width: 200px;
