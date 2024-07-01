@@ -77,26 +77,26 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Recorrer cada producto y renderizarlo en el DOM
         products.forEach(product => {
-            // CONVERTIMOS LOS VALORES DE STOCK Y PRECIO A NUMEROS USANDO PARSEFLOAT Y PARSEINT
+            // CONVERTIMOS LOS VALORES DE STOCK Y PRECIO A NÚMEROS USANDO PARSEFLOAT Y PARSEINT
             const precioNumber = parseFloat(product.precio);
             const stockNumber = parseInt(product.stock);
 
             if (isNaN(precioNumber) || isNaN(stockNumber)) {
                 return;
             }
-            // TRUNCAMOS LA DESCRIPCION Y EL TITULO DE LOS PRODUCTOS PARA QUE CUANDO EXCEDAN LOS 20 CARACTERES SE MUESTRE UN PUNTO SUSPENSIVO
-            const truncatedDescription = product.descripcion.length > 20 ? `${product.descripcion.substring(0, 20)}...` : product.descripcion;
-            const truncateTitle = product.title.length > 20 ? `${product.title.substring(0, 15)}...` : product.title;
+            // TRUNCAMOS LA DESCRIPCIÓN Y EL TÍTULO DE LOS PRODUCTOS PARA QUE CUANDO EXCEDAN LOS 20 CARACTERES SE MUESTRE UN PUNTO SUSPENSIVO
+            const truncateDescription = product.descripcion.length > 20 ? `${product.descripcion.substring(0, 20)}...` : product.descripcion;
+            const truncateTitle = product.title.length > 20 ? `${product.title.substring(0, 20)}...` : product.title;
 
             const productCard = `
                 <div class="col-md-4 contendor-Productos">
                     <div class="card mb-4 shadow-sm">
                         <img class="carrito-producto-imagen" src="${product.imageUrl}" alt="${product.title}">
                         <div class="card-body">
-                            <h5 class="card-title">${truncateTitle}</h5>
-                            <p class="card-text">${truncatedDescription}</p>
-                            <p class="card-precio"><strong class="strongPrecio">Precio:</strong> $${precioNumber.toFixed(2)}</p>
-                            <p class="card-stock">Stock: ${stockNumber}</p>
+                            <h5 class="card-title truncado">${truncateTitle}</h5>
+                            <p class="card-text truncado">${truncateDescription}</p>
+                            <p class="card-precio truncado"><strong class="strongPrecio">Precio:</strong> $${precioNumber.toFixed(2)}</p>
+                            <p class="card-stock" id="stockProducto">Stock: ${stockNumber}</p>
                             <button class="btn btn-primary agregarAlCarrito">Agregar al carrito</button>
                         </div>
                     </div>
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: (error),
+            text: error.message,
         });
     }
 });
