@@ -65,6 +65,17 @@ main {
 .text404 p{
     font-size: 25px;
 }
+div button{
+    color: #ffffff;
+    background-color: black;
+    font-size: 20px;
+    width: 75px;
+    text-align: center;
+}
+div button:hover{
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+}
 /* FIN DE TEXT404 */
 
 /* FOOTER */
@@ -82,7 +93,10 @@ footer p {
     margin: 0;
     font-size: 0.8em; 
 }
-
+footer h3{
+    margin-top: 30px;
+    text-decoration: underline;
+}
 .logofooter {
     width: 80px; 
     height: 70px; 
