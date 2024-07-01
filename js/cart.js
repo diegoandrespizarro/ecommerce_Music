@@ -36,7 +36,7 @@ document.addEventListener('click', async (event) => {
                 const nuevaCantidad = parseInt(cantidad.textContent) + 1;
                 if (nuevaCantidad > stock) {
                     Swal.fire({
-                        position: "top-end",
+                        position: "center",
                         icon: "error",
                         title: "No hay suficiente stock",
                         showConfirmButton: false,
@@ -134,12 +134,26 @@ document.addEventListener('click', (event) => {
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('bi-plus-circle')) {
         const cantidad = event.target.previousElementSibling;
-        cantidad.textContent = parseInt(cantidad.textContent) + 1;
-        guardarCarritoLocalStorage();
-        actualizarCantidadCarrito();
-        actualizarTotalCompra();
+        const stockText = document.getElementById('stockProducto').textContent;
+        const stock = parseInt(stockText.replace('Stock: ', '').trim());
+        
+        if (parseInt(cantidad.textContent) < stock) {
+            cantidad.textContent = parseInt(cantidad.textContent) + 1;
+            guardarCarritoLocalStorage();
+            actualizarCantidadCarrito();
+            actualizarTotalCompra();
+        } else {
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: "No hay suficiente stock",
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
-    });
+    }
+});
+
 
 //BOTON DE RESTAR PRODUCTO AL CARRITO
 document.addEventListener('click', (event) => {
@@ -167,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 position: "top-center",
                 icon: "success",
                 title: "Su compra fue realizada",
-                showConfirmButton: true,
+                showConfirmButton: false,
                 timer: 1500
             });
             // Vaciar el carrito en el DOM
@@ -258,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                         <i class="bi bi-dash-circle"></i><p>${producto.cantidad}</p><i class="bi bi-plus-circle"></i><i class="bi bi-trash3-fill"></i>
                                     </div>
                                 </div>
-                                <div class="card-precio-resumen" style="display: ;">${producto.precioNumber}</div>
+                                <div class="card-precio-resumen" style="display: ;">$${producto.precioNumber}</div>
                             </div>
                         </div>
                 `;
@@ -266,6 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+    
     cargarCarritoLocalStorageCart();
 });
 
