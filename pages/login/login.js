@@ -13,15 +13,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     loginForm.addEventListener('submit', async (event) => {
         event.preventDefault();
-        await login(); 
+        await login();
     });
 });
 
 async function login() {
     const email = emailInput.value;
-    console.log("valor de email",email)
+    console.log("valor de email", email)
     const password = passwordInput.value;
-    console.log("valor de email",password)
+    console.log("valor de email", password)
     const btnNuevoProduct = document.getElementById('btnNuevoProduct');
     // Obtener y verificar si hay usuarios almacenados
     const users = JSON.parse(localStorage.getItem('users'));
@@ -43,15 +43,15 @@ async function login() {
         return;
     }
 
-    
+
     // Login exitoso, establecer el rol y redirigir según el rol
     if (user.roll === 'admin') {
         localStorage.setItem('roll', 'admin');
-        window.location.href = '/pages/addproduct.html';
+        window.location.href = '../addproduct.html';
     } else {
         localStorage.setItem('roll', 'user');
-        window.location.href = '/index.html';
-    }   
+        window.location.href = '../../index.html';
+    }
 }
 function showError(message) {
     const messageElement = document.getElementById('message');
