@@ -68,7 +68,7 @@ document.addEventListener('click', async (event) => {
                             <i class="bi bi-dash-circle"></i><p>1</p><i class="bi bi-plus-circle"></i><i class="bi bi-trash3-fill"></i>
                         </div>
                     </div>
-                    <div class="card-precio" style="display:;">$${precioNumber.toFixed(2)}</div>
+                    <div class="card-precio" style="display:;">$${precioNumber.toFixed()}</div>
                 </div>
             `;
             carritoProductos.innerHTML += productCardHTML;
@@ -91,10 +91,10 @@ function actualizarTotalCompra() {
         sumaTotal += producto.precioNumber * producto.cantidad;
     });
     if (total) {
-        total.textContent =`$${sumaTotal.toFixed(2)}`;
+        total.textContent =`$${sumaTotal.toFixed()}`;
     }
     if (totalResumen) {
-        totalResumen.textContent =`$${sumaTotal.toFixed(2)}`;
+        totalResumen.textContent =`$${sumaTotal.toFixed()}`;
     }
 }
 
@@ -184,6 +184,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 showConfirmButton: false,
                 timer: 1500
             });
+            // Generar PDF con los productos comprados
+            generarPDF();
             // Vaciar el carrito en el DOM
             carritoProductosCart.innerHTML = '';
             
@@ -198,6 +200,59 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     } 
 });
+
+// FUNCION PARA GENERAR UN PDF CON LOS PRODUCTOS COMPRADOS
+function generarPDF() {
+    const productos = JSON.parse(localStorage.getItem('productosEnCarrito')) || [];
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.setFontSize(18);
+    const title = 'Resumen de Compra';
+    const titleWidth = doc.getTextWidth(title);
+    const pageWidth = doc.internal.pageSize.getWidth(); 
+    const centerTitle = (pageWidth - titleWidth) / 2;
+    doc.text(title, centerTitle, 10);
+
+    let y = 20;
+    let sumaTotal = 0;
+    const pageHeight = doc.internal.pageSize.getHeight();
+
+    productos.forEach((producto, index) => {
+        const totalProducto = producto.precioNumber * producto.cantidad;
+        sumaTotal += totalProducto;
+
+        // Verifica si hay espacio suficiente en la página actual, si no, añade una nueva página
+        if (y + 60 > pageHeight) { 
+            doc.addPage();
+            y = 20; 
+        }
+
+        doc.setFontSize(12);
+        doc.text(`Producto ${index + 1}: ${producto.titulo}`, 10, y);
+        doc.text(`Descripción: ${producto.descripcion}`, 10, y + 10);
+        doc.text(`Cantidad: ${producto.cantidad}`, 10, y + 20);
+        doc.text(`Precio unitario: $${producto.precioNumber.toFixed()}`, 10, y + 30);
+        doc.text(`Total: $${totalProducto.toFixed()}`, 10, y + 40);
+
+        // Dibuja una línea de separación entre productos
+        doc.setLineWidth(0.5);
+        doc.line(10, y + 45, 200, y + 45);
+
+        y += 55; // Incrementar la posición Y para el próximo producto
+    });
+
+    // Verifica si hay espacio suficiente en la página actual para el total, si no, añade una nueva página
+    if (y + 20 > pageHeight) { // 20 is the approximate height for the total entry
+        doc.addPage();
+        y = 20; // Reset Y position for new page
+    }
+
+    doc.setFontSize(14);
+    doc.text(`Total de la compra: $${sumaTotal.toFixed()}`, 10, y + 10);
+
+    doc.save('Resumen_de_Compra.pdf');
+}
 
 //PERSISTENCIA DE DATOS EN EL CARRITO DE COMPRAS LOCALSTORAGE
 const guardarCarritoLocalStorage = () => {
@@ -257,32 +312,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const cargarCarritoLocalStorageCart = () => {
         const productos = JSON.parse(localStorage.getItem('productosEnCarrito'));
+        let sumaTotal = 0; // Inicializar la suma total
+
         if (productos && carritoProductosCart) {
             productos.forEach((producto) => {
+                const totalProducto = producto.precioNumber * producto.cantidad; // Calcular el total del producto
+                sumaTotal += totalProducto; // Sumar al total general
+
                 const productCard = `
-                        <div class="contenedor-producto-resumen">
-                            <div class="carrito-producto-resumen">
-                                <img class="card-img-top-resumen" src="${producto.imageUrl}" alt="${producto.titulo}">
-                                <div class="carrito-producto-titulo-resumen">
-                                    <h1>${producto.titulo}</h1>
-                                    <h3>${producto.descripcion}</h3>
-                                </div>
-                                <div class="carrito-producto-cantidad-resumen">
-                                    <div class="suma-resta-productos">
-                                        <p>${producto.cantidad} unidades</p>
-                                    </div>
-                                </div>
-                                <div class="card-precio-resumen" style="display: ;">c/u $${producto.precioNumber}</div>
+                    <div class="contenedor-producto-resumen">
+                        <div class="carrito-producto-resumen">
+                            <img class="card-img-top-resumen" src="${producto.imageUrl}" alt="${producto.titulo}">
+                            <div class="carrito-producto-titulo-resumen">
+                                <h1>${producto.titulo}</h1>
+                                <h3>${producto.descripcion}</h3>
                             </div>
+                            <div class="carrito-producto-cantidad-resumen">
+                                <div class="suma-resta-productos">
+                                    <p>${producto.cantidad} unidades</p>
+                                </div>
+                            </div>
+                            <div class="card-precio-resumen" style="display: ;">c/u $${producto.precioNumber.toFixed()}</div>
+                            <div class="card-precio-total-resumen" style="display: ;">Total: $${totalProducto.toFixed()}</div>
                         </div>
+                    </div>
                 `;
                 carritoProductosCart.innerHTML += productCard;
             });
         }
     }
-    
+
     cargarCarritoLocalStorageCart();
 });
+
 
 //ACTUALIZAR LA CANTIDAD DE PRODUCTOS EN EL CARRITO
 const carritoCantidad = document.getElementById('carritoCantidad');
