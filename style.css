@@ -572,6 +572,7 @@
         color: white;
     }
 }
+
 @media screen and (max-width: 1000px){
     .contenedorTabla{
         width: 100%;
@@ -582,10 +583,12 @@
         width: 50px;
         font-size: 8px;
         text-align: center;
+        padding: 5px;
         margin-bottom: 4px;
     }
     .modificar-product{
         font-size: 8px;
+        padding: 5px;
         margin-bottom: 4px;
     }
     .carritoContenedor{
@@ -601,16 +604,26 @@
         flex-wrap: wrap;
     }
     .delete-product{
-        width: 50px;
-        font-size: 8px;
+        width: 40px;
+        font-size: 6px;
+        padding: 2px;
         margin-bottom: 4px;
     }
     .modificar-product{
-        font-size: 8px;
+        width: 40px;
+        padding: 2px;
+        font-size: 6px;
+    }
+    td{
+        img{
+            width: 29px;
+        }
     }
 }
 /* contenedor de Productos */
-
+.listadoProducts{
+    justify-content: center;
+}
 .contenedorDeProductos {
     width: 100%;
     height: auto;

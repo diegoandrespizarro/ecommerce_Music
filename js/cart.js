@@ -235,17 +235,17 @@ function generarPDF() {
         doc.text(`Precio unitario: $${producto.precioNumber.toFixed()}`, 10, y + 30);
         doc.text(`Total: $${totalProducto.toFixed()}`, 10, y + 40);
 
-        // Dibuja una línea de separación entre productos
+        // Línea divisoria
         doc.setLineWidth(0.5);
         doc.line(10, y + 45, 200, y + 45);
 
-        y += 55; // Incrementar la posición Y para el próximo producto
+        y += 55; // Incrementar la posición Y para el siguiente producto
     });
 
-    // Verifica si hay espacio suficiente en la página actual para el total, si no, añade una nueva página
-    if (y + 20 > pageHeight) { // 20 is the approximate height for the total entry
+    // Verificar si hay espacio suficiente para el total, si no, añade una nueva página
+    if (y + 20 > pageHeight) { // 20 es el espacio para el total
         doc.addPage();
-        y = 20; // Reset Y position for new page
+        y = 20; // Reiniciar la posición Y
     }
 
     doc.setFontSize(14);
