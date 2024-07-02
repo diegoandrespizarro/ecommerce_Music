@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <div class="card-body">
                             <h5 class="card-title truncado">${truncateTitle}</h5>
                             <p class="card-text truncado">${truncateDescription}</p>
-                            <p class="card-precio truncado"><strong class="strongPrecio">Precio:</strong> $${precioNumber.toFixed(2)}</p>
+                            <p class="card-precio truncado"><strong class="strongPrecio">Precio:</strong> $${precioNumber.toFixed()}</p>
                             <p class="card-stock" id="stockProducto">Stock: ${stockNumber}</p>
                             <button class="btn btn-primary agregarAlCarrito">Agregar al carrito</button>
                         </div>
