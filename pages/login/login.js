@@ -2,7 +2,6 @@ const urlUsers = "https://6678a3bf0bd45250561f5768.mockapi.io/EcommerceTheMusicH
 const loginForm = document.getElementById('loginForm');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
-
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const response = await fetch(urlUsers);
@@ -20,8 +19,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function login() {
     const email = emailInput.value;
+    console.log("valor de email",email)
     const password = passwordInput.value;
-
+    console.log("valor de email",password)
+    const btnNuevoProduct = document.getElementById('btnNuevoProduct');
     // Obtener y verificar si hay usuarios almacenados
     const users = JSON.parse(localStorage.getItem('users'));
     if (!users) {
@@ -42,28 +43,17 @@ async function login() {
         return;
     }
 
+    
     // Login exitoso, establecer el rol y redirigir según el rol
-    if (user.role === 'admin') {
-        localStorage.setItem('role', 'admin');
+    if (user.roll === 'admin') {
+        localStorage.setItem('roll', 'admin');
         window.location.href = '/pages/addproduct.html';
     } else {
-        localStorage.setItem('role', 'user');
+        localStorage.setItem('roll', 'user');
         window.location.href = '/index.html';
-    }
+    }   
 }
-
 function showError(message) {
     const messageElement = document.getElementById('message');
     messageElement.textContent = message;
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    const role = localStorage.getItem('role');
-    const nuevoProducto = document.getElementById('botonNuevoProducto');
-    
-    if (role === 'admin') {
-        nuevoProducto.style.display = 'inline';
-    } else {
-        nuevoProducto.style.display = 'none';
-    }
-});
